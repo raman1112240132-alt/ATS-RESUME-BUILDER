@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATS Resume Builder</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    header h1 { font-size: 28px; margin-bottom: 4px; }
+    header p { color: #475569; margin-top: 0; }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-top: 24px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+    }
+    .tab-btn.active {
+      color: #0f172a;
+      border-bottom: 2px solid #0f172a;
+    }
+    .tab-panel { display: none; margin-top: 24px; }
+    .tab-panel.active { display: block; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 800px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+    label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    input[type=text], input[type=email], textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: inherit;
+      resize: vertical;
+      margin-bottom: 12px;
+    }
+    #resumeText { height: 260px; }
+    #jobDescription { height: 160px; }
+    button {
+      background: #0f172a;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .secondary-btn { background: #64748b; padding: 8px 14px; font-size: 13px; }
+    .card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      background: white;
+    }
+    .card h2 { font-size: 16px; margin-top: 0; }
+    .check-item { display: flex; gap: 8px; font-size: 14px; margin-bottom: 8px; align-items: flex-start; }
+    .tag {
+      display: inline-block;
+      background: #fef2f2;
+      color: #b91c1c;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 12px;
+      margin: 2px;
+    }
+    #status { font-size: 14px; color: #64748b; margin-top: 8px; }
+    .placeholder { color: #94a3b8; font-size: 14px; }
+
+    .entry-block {
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .remove-entry {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: none;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0;
+    }
+    #resumePreview {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 24px;
+      font-size: 13px;
+      min-height: 300px;
+    }
+    #resumePreview h1 { font-size: 18px; text-align: center; margin-bottom: 2px; }
+    #resumePreview .contact-line { text-align: center; font-size: 11px; color: #475569; margin-bottom: 14px; }
+    #resumePreview h2 { font-size: 13px; border-bottom: 1px solid #cbd5e1; padding-bottom: 2px; margin-top: 16px; }
+    #resumePreview .job-title { font-weight: 600; margin-top: 8px; }
+    #resumePreview .job-dates { color: #64748b; font-size: 11px; }
+    #resumePreview ul { margin: 4px 0; padding-left: 18px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ATS Resume Builder</h1>
+      <p>Real shortlisting likelihood based on how well your resume matches the job description — not just a nice template.</p>
+    </header>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="score">Score my resume</button>
+      <button class="tab-btn" data-tab="build">Build my resume</button>
+    </div>
+
+    <!-- SCORE EXISTING RESUME -->
+    <div class="tab-panel active" id="tab-score">
+      <div class="grid">
+        <div>
+          <label for="resumeText">Your resume (plain text)</label>
+          <textarea id="resumeText" placeholder="Paste your resume text here..."></textarea>
+
+          <label for="jobDescription">Job description</label>
+          <textarea id="jobDescription" placeholder="Paste the job description here..."></textarea>
+
+          <button id="scoreBtn">Score my resume</button>
+          <div id="status"></div>
+        </div>
+
+        <div id="results">
+          <p class="placeholder">Results will appear here after you score your resume.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUILD FROM SCRATCH -->
+    <div class="tab-panel" id="tab-build">
+      <div class="grid">
+        <div>
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" placeholder="Jane Doe" />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="jane@example.com" />
+
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" placeholder="+91 98765 43210" />
+
+          <label for="location">Location</label>
+          <input type="text" id="location" placeholder="Lucknow, UP" />
+
+          <label for="summary">Summary</label>
+          <textarea id="summary" style="height:80px;" placeholder="2-3 line professional summary..."></textarea>
+
+          <label>Experience</label>
+          <div id="experienceList"></div>
+          <button type="button" class="secondary-btn" id="addExperience">+ Add experience</button>
+
+          <label style="margin-top:16px;">Education</label>
+          <div id="educationList"></div>
+          <button type="button" class="secondary-btn" id="addEducation">+ Add education</button>
+
+          <label style="margin-top:16px;">Skills (comma-separated)</label>
+          <textarea id="skills" style="height:60px;" placeholder="Excel, Stakeholder Management, Power BI..."></textarea>
+
+          <div style="margin-top:16px;">
+            <button id="downloadResumePdfBtn">Download PDF</button>
+            <button id="downloadResumeDocxBtn" class="secondary-btn">Download Word</button>
+          </div>
+        </div>
+
+        <div>
+          <label>Live preview</label>
+          <div id="resumePreview"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <template id="experienceTemplate">
+    <div class="entry-block experience-entry">
+      <input type="text" class="exp-title" placeholder="Job title" />
+      <input type="text" class="exp-company" placeholder="Company" />
+      <input type="text" class="exp-dates" placeholder="Jan 2022 - Present" />
+      <textarea class="exp-bullets" style="height:70px;" placeholder="One achievement per line..."></textarea>
+      <button type="button" class="remove-entry">Remove</button>
+    </div>
+  </template>
+
+  <template id="educationTemplate">
+    <div class="entry-block education-entry">
+      <input type="text" class="edu-degree" placeholder="Degree" />
+      <input type="text" class="edu-institution" placeholder="Institution" />
+      <input type="text" class="edu-dates" placeholder="2018 - 2022" />
+      <button type="button" class="remove-entry">Remove</button>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -45,22 +45,77 @@ scoreBtn.addEventListener("click", async () => {
     const suggestions = await rewriteRes.json();
 
     if (scoreData.error) {
-      resultsEl.innerHTML = `<p style="color:#b91c1c;">${scoreData.error}</p>`;
+      resultsEl.innerHTML = `<p style="color:var(--warn);">${scoreData.error}</p>`;
       return;
     }
 
     lastReportData = { ...scoreData, suggestions };
     renderResults(lastReportData);
   } catch (err) {
-    resultsEl.innerHTML = `<p style="color:#b91c1c;">Request failed. Is the server running?</p>`;
+    resultsEl.innerHTML = `<p style="color:var(--warn);">Request failed. Is the server running?</p>`;
   } finally {
     scoreBtn.disabled = false;
     statusEl.textContent = "";
   }
 });
 
+function gaugeColor(score) {
+  if (score >= 75) return "#0B6E4F";
+  if (score >= 50) return "#B5730A";
+  return "#B42318";
+}
+
+function gaugeVerdict(score) {
+  if (score >= 75) return "Strong match";
+  if (score >= 50) return "Needs work";
+  return "Weak match";
+}
+
+function buildGaugeSvg(score) {
+  const radius = 40;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (Math.min(Math.max(score, 0), 100) / 100) * circumference;
+  const color = gaugeColor(score);
+  return `
+    <div class="gauge-wrap">
+      <svg width="96" height="96" viewBox="0 0 96 96">
+        <circle class="gauge-track" cx="48" cy="48" r="${radius}" />
+        <circle class="gauge-fill" cx="48" cy="48" r="${radius}"
+          stroke="${color}"
+          stroke-dasharray="${circumference}"
+          stroke-dashoffset="${offset}" />
+      </svg>
+      <div class="gauge-number" style="color:${color};">${score}%</div>
+    </div>
+  `;
+}
+
 function renderResults(data) {
   let html = "";
+
+  if (data.aiScore && !data.aiScore.error) {
+    const score = data.aiScore.keywordMatchScore ?? 0;
+    html += `<div class="card">
+      <div class="gauge-row">
+        ${buildGaugeSvg(score)}
+        <div class="gauge-label-block">
+          <h2>Keyword match</h2>
+          <div class="verdict" style="color:${gaugeColor(score)};">${gaugeVerdict(score)}</div>
+        </div>
+      </div>
+      <p style="font-size:14px;color:var(--muted);margin-top:14px;">${data.aiScore.summary ?? ""}</p>`;
+    if (data.aiScore.matchedKeywords?.length) {
+      html += `<div style="margin-top:8px;"><strong style="font-size:13px;">Matched:</strong><br/>`;
+      for (const kw of data.aiScore.matchedKeywords) html += `<span class="tag matched">${kw}</span>`;
+      html += `</div>`;
+    }
+    if (data.aiScore.missingKeywords?.length) {
+      html += `<div style="margin-top:8px;"><strong style="font-size:13px;">Missing:</strong><br/>`;
+      for (const kw of data.aiScore.missingKeywords) html += `<span class="tag">${kw}</span>`;
+      html += `</div>`;
+    }
+    html += `</div>`;
+  }
 
   if (data.ruleChecks) {
     html += `<div class="card"><h2>Format checks</h2>`;
@@ -71,27 +126,13 @@ function renderResults(data) {
     html += `</div>`;
   }
 
-  if (data.aiScore && !data.aiScore.error) {
-    html += `<div class="card">
-      <h2>Keyword match: ${data.aiScore.keywordMatchScore ?? "—"}%</h2>
-      <p style="font-size:14px;color:#475569;">${data.aiScore.summary ?? ""}</p>`;
-    if (data.aiScore.missingKeywords?.length) {
-      html += `<div><strong style="font-size:14px;">Missing keywords:</strong><br/>`;
-      for (const kw of data.aiScore.missingKeywords) {
-        html += `<span class="tag">${kw}</span>`;
-      }
-      html += `</div>`;
-    }
-    html += `</div>`;
-  }
-
   if (data.suggestions?.suggestions?.length) {
     html += `<div class="card"><h2>Suggested rewrites</h2>`;
     for (const s of data.suggestions.suggestions) {
       html += `<div style="margin-bottom:14px;font-size:14px;">
         <div><strong>Original:</strong> ${s.original}</div>
         <div><strong>Suggested:</strong> ${s.rewrite}</div>
-        <div style="color:#64748b;font-size:13px;"><em>Why:</em> ${s.reason}</div>
+        <div style="color:var(--muted);font-size:13px;"><em>Why:</em> ${s.reason}</div>
       </div>`;
     }
     html += `</div>`;
@@ -184,18 +225,14 @@ function updatePreview() {
   const contactLine = [data.email, data.phone, data.location].filter(Boolean).map(escapeHtml).join(" | ");
   html += `<div class="contact-line">${contactLine}</div>`;
 
-  if (data.summary) {
-    html += `<h2>Summary</h2><p>${escapeHtml(data.summary)}</p>`;
-  }
+  if (data.summary) html += `<h2>Summary</h2><p>${escapeHtml(data.summary)}</p>`;
 
   if (data.experience.length) {
     html += `<h2>Experience</h2>`;
     data.experience.forEach((job) => {
       html += `<div class="job-title">${escapeHtml(job.title)} — ${escapeHtml(job.company)}</div>`;
       html += `<div class="job-dates">${escapeHtml(job.dates)}</div>`;
-      if (job.bullets.length) {
-        html += `<ul>${job.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`;
-      }
+      if (job.bullets.length) html += `<ul>${job.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>`;
     });
   }
 
@@ -207,9 +244,7 @@ function updatePreview() {
     });
   }
 
-  if (data.skills) {
-    html += `<h2>Skills</h2><p>${escapeHtml(data.skills)}</p>`;
-  }
+  if (data.skills) html += `<h2>Skills</h2><p>${escapeHtml(data.skills)}</p>`;
 
   preview.innerHTML = html;
 }

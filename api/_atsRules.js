@@ -1,6 +1,3 @@
-// Rule-based ATS compatibility checks — free, instant, no AI call needed.
-// These catch formatting issues that break real ATS parsers.
-
 function runAtsRuleChecks(resumeText) {
   const lowerText = resumeText.toLowerCase();
   const results = [];

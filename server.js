@@ -16,7 +16,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.post("/api/score", async (req, res) => {
   try {
     const { resumeText, jobDescription } = req.body;
-
     if (!resumeText || !jobDescription) {
       return res.status(400).json({ error: "resumeText and jobDescription are both required" });
     }
@@ -68,7 +67,6 @@ ${jobDescription}`,
 app.post("/api/rewrite", async (req, res) => {
   try {
     const { resumeText, jobDescription } = req.body;
-
     if (!resumeText || !jobDescription) {
       return res.status(400).json({ error: "resumeText and jobDescription are both required" });
     }
@@ -131,10 +129,7 @@ app.post("/api/report/pdf", async (req, res) => {
 app.post("/api/report/docx", async (req, res) => {
   try {
     const buffer = await buildDocxBuffer(req.body);
-    res.setHeader(
-      "Content-Type",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    );
+    res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
     res.setHeader("Content-Disposition", "attachment; filename=ats-report.docx");
     res.send(buffer);
   } catch (err) {
@@ -158,10 +153,7 @@ app.post("/api/resume/pdf", async (req, res) => {
 app.post("/api/resume/docx", async (req, res) => {
   try {
     const buffer = await buildResumeDocxBuffer(req.body);
-    res.setHeader(
-      "Content-Type",
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    );
+    res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
     res.setHeader("Content-Disposition", "attachment; filename=resume.docx");
     res.send(buffer);
   } catch (err) {

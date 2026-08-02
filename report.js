@@ -5,10 +5,8 @@ const {
   Paragraph,
   TextRun,
   HeadingLevel,
-  Spacing,
 } = require("docx");
 
-// Builds a PDF buffer from the analysis data. Returns a Promise<Buffer>.
 function buildPdfBuffer(data) {
   const { aiScore, ruleChecks, suggestions } = data;
 
@@ -22,9 +20,7 @@ function buildPdfBuffer(data) {
     doc.fontSize(20).text("ATS Resume Report", { underline: true });
     doc.moveDown();
 
-    doc.fontSize(14).text(
-      `Keyword Match Score: ${aiScore?.keywordMatchScore ?? "—"}%`
-    );
+    doc.fontSize(14).text(`Keyword Match Score: ${aiScore?.keywordMatchScore ?? "—"}%`);
     doc.moveDown(0.5);
     if (aiScore?.summary) {
       doc.fontSize(11).text(aiScore.summary);
@@ -46,9 +42,7 @@ function buildPdfBuffer(data) {
     if (ruleChecks?.length) {
       doc.fontSize(13).text("Format Checks", { underline: true });
       ruleChecks.forEach((check) => {
-        doc
-          .fontSize(11)
-          .text(`${check.passed ? "[PASS]" : "[WARN]"} ${check.label}: ${check.detail}`);
+        doc.fontSize(11).text(`${check.passed ? "[PASS]" : "[WARN]"} ${check.label}: ${check.detail}`);
       });
       doc.moveDown();
     }
@@ -68,7 +62,6 @@ function buildPdfBuffer(data) {
   });
 }
 
-// Builds a DOCX buffer from the analysis data. Returns a Promise<Buffer>.
 async function buildDocxBuffer(data) {
   const { aiScore, ruleChecks, suggestions } = data;
 
@@ -80,9 +73,7 @@ async function buildDocxBuffer(data) {
     }),
   ];
 
-  if (aiScore?.summary) {
-    children.push(new Paragraph({ text: aiScore.summary }));
-  }
+  if (aiScore?.summary) children.push(new Paragraph({ text: aiScore.summary }));
 
   if (aiScore?.matchedKeywords?.length) {
     children.push(new Paragraph({ text: "Matched Keywords", heading: HeadingLevel.HEADING_2 }));
@@ -100,10 +91,7 @@ async function buildDocxBuffer(data) {
       children.push(
         new Paragraph({
           children: [
-            new TextRun({
-              text: `${check.passed ? "[PASS] " : "[WARN] "}`,
-              bold: true,
-            }),
+            new TextRun({ text: `${check.passed ? "[PASS] " : "[WARN] "}`, bold: true }),
             new TextRun(`${check.label}: ${check.detail}`),
           ],
         })
@@ -114,21 +102,9 @@ async function buildDocxBuffer(data) {
   if (suggestions?.suggestions?.length) {
     children.push(new Paragraph({ text: "Suggested Rewrites", heading: HeadingLevel.HEADING_2 }));
     suggestions.suggestions.forEach((s, i) => {
-      children.push(
-        new Paragraph({
-          children: [new TextRun({ text: `${i + 1}. Original: `, bold: true }), new TextRun(s.original)],
-        })
-      );
-      children.push(
-        new Paragraph({
-          children: [new TextRun({ text: "Suggested: ", bold: true }), new TextRun(s.rewrite)],
-        })
-      );
-      children.push(
-        new Paragraph({
-          children: [new TextRun({ text: "Why: ", italics: true }), new TextRun({ text: s.reason, italics: true })],
-        })
-      );
+      children.push(new Paragraph({ children: [new TextRun({ text: `${i + 1}. Original: `, bold: true }), new TextRun(s.original)] }));
+      children.push(new Paragraph({ children: [new TextRun({ text: "Suggested: ", bold: true }), new TextRun(s.rewrite)] }));
+      children.push(new Paragraph({ children: [new TextRun({ text: "Why: ", italics: true }), new TextRun({ text: s.reason, italics: true })] }));
     });
   }
 

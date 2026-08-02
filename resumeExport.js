@@ -8,8 +8,6 @@ const {
   AlignmentType,
 } = require("docx");
 
-// Builds an ATS-safe resume PDF from structured builder data.
-// Single column, standard fonts, no tables/graphics — by design.
 function buildResumePdfBuffer(data) {
   const { fullName, email, phone, location, summary, experience, education, skills } = data;
 
@@ -22,9 +20,7 @@ function buildResumePdfBuffer(data) {
 
     doc.fontSize(20).text(fullName || "Your Name", { align: "center" });
     const contactLine = [email, phone, location].filter(Boolean).join("  |  ");
-    if (contactLine) {
-      doc.fontSize(10).text(contactLine, { align: "center" });
-    }
+    if (contactLine) doc.fontSize(10).text(contactLine, { align: "center" });
     doc.moveDown();
 
     if (summary) {
@@ -71,19 +67,11 @@ async function buildResumeDocxBuffer(data) {
   const { fullName, email, phone, location, summary, experience, education, skills } = data;
 
   const children = [
-    new Paragraph({
-      text: fullName || "Your Name",
-      heading: HeadingLevel.TITLE,
-      alignment: AlignmentType.CENTER,
-    }),
+    new Paragraph({ text: fullName || "Your Name", heading: HeadingLevel.TITLE, alignment: AlignmentType.CENTER }),
   ];
 
   const contactLine = [email, phone, location].filter(Boolean).join("  |  ");
-  if (contactLine) {
-    children.push(
-      new Paragraph({ text: contactLine, alignment: AlignmentType.CENTER })
-    );
-  }
+  if (contactLine) children.push(new Paragraph({ text: contactLine, alignment: AlignmentType.CENTER }));
 
   if (summary) {
     children.push(new Paragraph({ text: "Summary", heading: HeadingLevel.HEADING_2 }));
@@ -93,16 +81,8 @@ async function buildResumeDocxBuffer(data) {
   if (experience?.length) {
     children.push(new Paragraph({ text: "Experience", heading: HeadingLevel.HEADING_2 }));
     experience.forEach((job) => {
-      children.push(
-        new Paragraph({
-          children: [
-            new TextRun({ text: `${job.title || ""} — ${job.company || ""}`, bold: true }),
-          ],
-        })
-      );
-      if (job.dates) {
-        children.push(new Paragraph({ children: [new TextRun({ text: job.dates, italics: true })] }));
-      }
+      children.push(new Paragraph({ children: [new TextRun({ text: `${job.title || ""} — ${job.company || ""}`, bold: true })] }));
+      if (job.dates) children.push(new Paragraph({ children: [new TextRun({ text: job.dates, italics: true })] }));
       (job.bullets || []).forEach((b) => {
         if (b.trim()) children.push(new Paragraph({ text: `• ${b}` }));
       });
@@ -112,16 +92,8 @@ async function buildResumeDocxBuffer(data) {
   if (education?.length) {
     children.push(new Paragraph({ text: "Education", heading: HeadingLevel.HEADING_2 }));
     education.forEach((ed) => {
-      children.push(
-        new Paragraph({
-          children: [
-            new TextRun({ text: `${ed.degree || ""} — ${ed.institution || ""}`, bold: true }),
-          ],
-        })
-      );
-      if (ed.dates) {
-        children.push(new Paragraph({ children: [new TextRun({ text: ed.dates, italics: true })] }));
-      }
+      children.push(new Paragraph({ children: [new TextRun({ text: `${ed.degree || ""} — ${ed.institution || ""}`, bold: true })] }));
+      if (ed.dates) children.push(new Paragraph({ children: [new TextRun({ text: ed.dates, italics: true })] }));
     });
   }
 

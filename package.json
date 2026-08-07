@@ -1,0 +1,101 @@
+{
+  "name": "warli-resume",
+  "version": "2.0.0",
+  "description": "AI-Powered ATS Resume Builder - Know if your resume actually gets shortlisted",
+  "main": "index.html",
+  "type": "module",
+  "scripts": {
+    "dev": "echo '🚀 Starting development server...' && npx serve . -l 3000",
+    "build": "echo '📦 Building static site...' && mkdir -p dist && cp index.html dist/ && cp -r assets dist/ 2>/dev/null || true",
+    "start": "echo '🌐 Starting production server...' && npx serve dist -l 3000",
+    "deploy": "echo '🚀 Deploying to Vercel...' && vercel --prod",
+    "deploy:preview": "echo '🔍 Deploying preview...' && vercel",
+    "deploy:functions": "echo '⚡ Deploying Supabase Edge Functions...' && supabase functions deploy rewrite --no-verify-jwt && supabase functions deploy score --no-verify-jwt && supabase functions deploy extract-text --no-verify-jwt",
+    "deploy:all": "npm run deploy:functions && npm run deploy",
+    "test": "echo '🧪 No tests configured yet' && exit 0",
+    "lint": "echo '📝 No linter configured yet' && exit 0",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "prepare": "echo '🔧 Preparing project...'",
+    "clean": "rm -rf dist node_modules package-lock.json .vercel",
+    "reset": "npm run clean && npm install",
+    "env:setup": "echo '🔐 Setting up environment variables...' && vercel env pull",
+    "logs": "vercel logs",
+    "status": "vercel list",
+    "rollback": "vercel rollback"
+  },
+  "keywords": [
+    "resume",
+    "ats",
+    "warli",
+    "builder",
+    "job-search",
+    "career",
+    "ai-resume",
+    "applicant-tracking-system",
+    "resume-builder",
+    "ats-scorer",
+    "ai-rewrite",
+    "job-application",
+    "career-tools",
+    "india-jobs",
+    "ats-friendly"
+  ],
+  "author": {
+    "name": "Raman Kumar",
+    "email": "raman9795@live.com",
+    "url": "https://github.com/raman1112240132-alt"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raman1112240132-alt/ATS-RESUME-BUILDER.git",
+    "directory": "."
+  },
+  "bugs": {
+    "url": "https://github.com/raman1112240132-alt/ATS-RESUME-BUILDER/issues"
+  },
+  "homepage": "https://ats-resume-builder.vercel.app",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "os": ["darwin", "linux", "win32"],
+  "cpu": ["x64", "arm64"],
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "serve": "^14.2.3",
+    "supabase": "^1.220.0",
+    "vercel": "^37.1.0"
+  },
+  "optionalDependencies": {
+    "@vercel/node": "^3.2.0"
+  },
+  "peerDependencies": {
+    "node": ">=18.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 0.5%",
+    "not dead",
+    "not IE 11"
+  ],
+  "funding": {
+    "type": "individual",
+    "url": "https://buymeacoffee.com/yourhandle"
+  },
+  "contributors": [
+    {
+      "name": "Raman Kumar",
+      "email": "raman9795@live.com",
+      "role": "Founder & Developer"
+    }
+  ],
+  "badges": {
+    "madeWith": "❤️ in India",
+    "poweredBy": "Supabase, Claude AI, Vercel"
+  }
+}

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <style>
   :root {
     --ink: #0F1B2B;
@@ -247,10 +248,98 @@
     background: var(--paper);
   }
   .ai-suggestion .apply-btn { background: var(--accent); padding: 6px 14px; font-size: 12px; border-radius: 6px; margin-top: 8px; }
+
+  /* ---------- Auth bar ---------- */
+  .auth-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 0 0;
+    font-size: 13px;
+  }
+  .google-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--border);
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+  .user-chip { font-size: 13px; color: var(--muted); }
+  .signout-btn { background: var(--surface); color: var(--warn); border: 1px solid var(--warn-soft); padding: 6px 12px; font-size: 12px; }
+
+  /* ---------- My Resumes tab ---------- */
+  .resume-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    background: var(--surface);
+  }
+  .resume-row .meta { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .resume-row .actions button { margin: 0 0 0 8px; padding: 7px 14px; font-size: 12.5px; }
+  .signed-out-note {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--muted);
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+  }
+
+  /* ---------- Template selector + photo ---------- */
+  .template-grid { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .template-option {
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 14px;
+    font-size: 12.5px;
+    cursor: pointer;
+    background: var(--surface);
+  }
+  .template-option.selected { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+  #photoUploadField { display: none; }
+  #resumePreview.template-creative { border-top: 5px solid var(--structure); }
+  #resumePreview .preview-photo {
+    width: 78px; height: 78px; border-radius: 50%; object-fit: cover;
+    display: block; margin: 0 auto 10px;
+  }
+
+  /* ---------- Copy + upload controls ---------- */
+  .field-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .field-toolbar label { margin-bottom: 0; }
+  .field-actions { display: flex; gap: 6px; }
+  .icon-btn {
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    font-size: 11.5px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 0;
+  }
+  .icon-btn:hover:not(:disabled) { color: var(--ink); border-color: var(--structure); }
+  .upload-status { font-size: 12px; color: var(--muted); margin: -8px 0 10px; }
+  .upload-status.error { color: var(--warn); }
 </style>
 </head>
 <body>
 <div class="container">
+
+  <div class="auth-bar" id="authBar">
+    <button class="google-btn" id="googleSignInBtn">
+      <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.6 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4c-7.6 0-14.2 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.3 0 10.1-2 13.7-5.4l-6.3-5.3C29.4 35 26.8 36 24 36c-5.4 0-9.9-3.4-11.6-8.2l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1 3-3.1 5.5-5.9 7.2l6.3 5.3C39.8 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
+      Sign in with Google
+    </button>
+    <span class="user-chip" id="userChip" style="display:none;"></span>
+    <button class="signout-btn" id="signOutBtn" style="display:none;">Sign out</button>
+  </div>
 
   <header class="hero">
     <div class="eyebrow">Built for Indian job seekers</div>
@@ -268,16 +357,33 @@
   <div class="tabs">
     <button class="tab-btn active" data-tab="score">Score my resume</button>
     <button class="tab-btn" data-tab="build">Build my resume</button>
+    <button class="tab-btn" data-tab="myresumes">My resumes</button>
   </div>
 
   <div class="tab-panel active" id="tab-score">
     <div class="grid">
       <div>
-        <label for="resumeText">Your resume (plain text)</label>
-        <textarea id="resumeText" placeholder="Paste your resume text here..."></textarea>
+        <div class="field-toolbar">
+          <label for="resumeText">Your resume (plain text)</label>
+          <div class="field-actions">
+            <button type="button" class="icon-btn" data-copy-target="resumeText">📋 Copy</button>
+            <button type="button" class="icon-btn" onclick="document.getElementById('resumeFileInput').click()">📎 Upload file</button>
+          </div>
+        </div>
+        <input type="file" id="resumeFileInput" accept=".pdf,.docx,.doc,image/*" style="display:none;" />
+        <div class="upload-status" id="resumeUploadStatus"></div>
+        <textarea id="resumeText" placeholder="Paste your resume text here, or upload a PDF / Word file / photo of it above..."></textarea>
 
-        <label for="jobDescription">Job description</label>
-        <textarea id="jobDescription" placeholder="Paste the job description here..."></textarea>
+        <div class="field-toolbar">
+          <label for="jobDescription">Job description</label>
+          <div class="field-actions">
+            <button type="button" class="icon-btn" data-copy-target="jobDescription">📋 Copy</button>
+            <button type="button" class="icon-btn" onclick="document.getElementById('jdFileInput').click()">📎 Upload file</button>
+          </div>
+        </div>
+        <input type="file" id="jdFileInput" accept=".pdf,.docx,.doc,image/*" style="display:none;" />
+        <div class="upload-status" id="jdUploadStatus"></div>
+        <textarea id="jobDescription" placeholder="Paste the job description here, or upload a file above..."></textarea>
 
         <button id="scoreBtn" class="accent-btn">Score my resume</button>
         <div id="status"></div>
@@ -292,6 +398,19 @@
   <div class="tab-panel" id="tab-build">
     <div class="grid">
       <div>
+        <label>Template</label>
+        <div class="template-grid">
+          <div class="template-option selected" data-template="professional">Professional (ATS-safe)</div>
+          <div class="template-option" data-template="simple">Simple / Fresher (ATS-safe)</div>
+          <div class="template-option" data-template="creative">Creative (with photo)</div>
+        </div>
+
+        <div id="photoUploadField">
+          <label for="photoInput">Profile photo</label>
+          <div class="hint">Only used for the Creative template — most ATS-optimized templates should skip a photo.</div>
+          <input type="file" id="photoInput" accept="image/*" />
+        </div>
+
         <label for="fullName">Full name</label>
         <input type="text" id="fullName" placeholder="Jane Doe" />
 
@@ -307,9 +426,17 @@
         <label for="summary">Summary</label>
         <textarea id="summary" style="height:80px;" placeholder="2-3 line professional summary..."></textarea>
 
-        <label for="buildJobDescription">Job description (optional)</label>
+        <div class="field-toolbar">
+          <label for="buildJobDescription">Job description (optional)</label>
+          <div class="field-actions">
+            <button type="button" class="icon-btn" data-copy-target="buildJobDescription">📋 Copy</button>
+            <button type="button" class="icon-btn" onclick="document.getElementById('buildJdFileInput').click()">📎 Upload file</button>
+          </div>
+        </div>
+        <input type="file" id="buildJdFileInput" accept=".pdf,.docx,.doc,image/*" style="display:none;" />
+        <div class="upload-status" id="buildJdUploadStatus"></div>
         <div class="hint">Paste one to align your wording with it. Leave blank and the AI will still polish your sentences.</div>
-        <textarea id="buildJobDescription" style="height:90px;" placeholder="Paste a job description here..."></textarea>
+        <textarea id="buildJobDescription" style="height:90px;" placeholder="Paste a job description here, or upload a file above..."></textarea>
         <button type="button" id="aiEnhanceBtn" class="accent-btn">✨ AI Enhance Resume</button>
         <div id="aiEnhanceStatus" style="font-size:13px;color:var(--muted);margin-top:6px;"></div>
         <div id="aiEnhanceResults"></div>
@@ -328,6 +455,8 @@
         <div style="margin-top:18px;">
           <button id="downloadResumePdfBtn">Download PDF</button>
           <button id="downloadResumeDocxBtn" class="secondary-btn">Download Word</button>
+          <button id="saveResumeBtn" class="accent-btn">💾 Save to my account</button>
+          <div id="saveResumeStatus" style="font-size:13px;color:var(--muted);margin-top:6px;"></div>
         </div>
       </div>
 
@@ -336,6 +465,14 @@
         <div id="resumePreview"></div>
       </div>
     </div>
+  </div>
+
+  <!-- MY RESUMES -->
+  <div class="tab-panel" id="tab-myresumes">
+    <div id="myResumesSignedOut" class="signed-out-note">
+      Sign in with Google above to see and manage your saved resumes.
+    </div>
+    <div id="myResumesList" style="display:none;"></div>
   </div>
 
 </div>
@@ -360,7 +497,303 @@
   </div>
 </template>
 
-<script src="app.js"></script>
+<!-- Supabase client — fill in your project's values below -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // TODO: replace these two with your real Supabase project values
+  // (Supabase dashboard → Settings → API)
+  const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+  }
+
+  let currentUser = null;
+  let selectedTemplate = "professional";
+  let uploadedPhotoUrl = null;
+
+  /* ---------- Auth ---------- */
+  document.getElementById("googleSignInBtn").addEventListener("click", async () => {
+    await supabaseClient.auth.signInWithOAuth({ provider: "google" });
+  });
+
+  document.getElementById("signOutBtn").addEventListener("click", async () => {
+    await supabaseClient.auth.signOut();
+    currentUser = null;
+    refreshAuthUi();
+  });
+
+  async function refreshAuthUi() {
+    const { data } = await supabaseClient.auth.getUser();
+    currentUser = data?.user || null;
+
+    const googleBtn = document.getElementById("googleSignInBtn");
+    const userChip = document.getElementById("userChip");
+    const signOutBtn = document.getElementById("signOutBtn");
+    const signedOutNote = document.getElementById("myResumesSignedOut");
+    const listEl = document.getElementById("myResumesList");
+
+    if (currentUser) {
+      googleBtn.style.display = "none";
+      userChip.style.display = "inline";
+      userChip.textContent = currentUser.email;
+      signOutBtn.style.display = "inline-block";
+      signedOutNote.style.display = "none";
+      listEl.style.display = "block";
+      loadMyResumes();
+    } else {
+      googleBtn.style.display = "inline-flex";
+      userChip.style.display = "none";
+      signOutBtn.style.display = "none";
+      signedOutNote.style.display = "block";
+      listEl.style.display = "none";
+    }
+  }
+
+  supabaseClient.auth.onAuthStateChange(() => refreshAuthUi());
+  refreshAuthUi();
+
+  /* ---------- Copy to clipboard ---------- */
+  document.querySelectorAll("[data-copy-target]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const el = document.getElementById(btn.dataset.copyTarget);
+      if (!el.value.trim()) { btn.textContent = "Nothing to copy"; setTimeout(() => (btn.textContent = "📋 Copy"), 1500); return; }
+      try {
+        await navigator.clipboard.writeText(el.value);
+        btn.textContent = "✅ Copied";
+      } catch {
+        btn.textContent = "Copy failed";
+      }
+      setTimeout(() => (btn.textContent = "📋 Copy"), 1500);
+    });
+  });
+
+  /* ---------- File upload → extract text (PDF / DOCX / image) ---------- */
+  function wireFileUpload(inputId, textareaId, statusId) {
+    document.getElementById(inputId).addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const statusEl = document.getElementById(statusId);
+      const textareaEl = document.getElementById(textareaId);
+      statusEl.className = "upload-status";
+      statusEl.textContent = `Reading ${file.name}...`;
+
+      try {
+        let extractedText = "";
+
+        if (file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf")) {
+          extractedText = await extractPdfText(file);
+        } else if (
+          file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+          file.name.toLowerCase().endsWith(".docx")
+        ) {
+          extractedText = await extractDocxText(file);
+        } else if (file.type.startsWith("image/")) {
+          extractedText = await extractImageText(file);
+        } else if (file.name.toLowerCase().endsWith(".doc")) {
+          throw new Error("Old .doc format isn't supported — please save it as .docx or PDF first.");
+        } else {
+          throw new Error("Unsupported file type. Use PDF, DOCX, or an image.");
+        }
+
+        if (!extractedText.trim()) throw new Error("No readable text found in that file.");
+
+        textareaEl.value = extractedText.trim();
+        textareaEl.dispatchEvent(new Event("input"));
+        statusEl.textContent = `Loaded text from ${file.name}`;
+      } catch (err) {
+        statusEl.className = "upload-status error";
+        statusEl.textContent = err.message || "Could not read that file.";
+      } finally {
+        e.target.value = "";
+      }
+    });
+  }
+
+  wireFileUpload("resumeFileInput", "resumeText", "resumeUploadStatus");
+  wireFileUpload("jdFileInput", "jobDescription", "jdUploadStatus");
+  wireFileUpload("buildJdFileInput", "buildJobDescription", "buildJdUploadStatus");
+
+  async function extractPdfText(file) {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    let text = "";
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+      text += content.items.map((item) => item.str).join(" ") + "\n";
+    }
+    return text;
+  }
+
+  async function extractDocxText(file) {
+    const arrayBuffer = await file.arrayBuffer();
+    const result = await mammoth.extractRawText({ arrayBuffer });
+    return result.value;
+  }
+
+  async function extractImageText(file) {
+    const base64 = await fileToBase64(file);
+    const res = await fetch("/api/extract-text", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ imageBase64: base64, mimeType: file.type }),
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    return data.text || "";
+  }
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  /* ---------- Template selection ---------- */
+  document.querySelectorAll(".template-option").forEach((el) => {
+    el.addEventListener("click", () => {
+      document.querySelectorAll(".template-option").forEach((o) => o.classList.remove("selected"));
+      el.classList.add("selected");
+      selectedTemplate = el.dataset.template;
+      document.getElementById("photoUploadField").style.display =
+        selectedTemplate === "creative" ? "block" : "none";
+      updatePreview();
+    });
+  });
+
+  /* ---------- Photo upload (Supabase Storage) ---------- */
+  document.getElementById("photoInput").addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file || !currentUser) {
+      if (!currentUser) alert("Sign in first so your photo can be saved to your account.");
+      return;
+    }
+    const path = `${currentUser.id}/${Date.now()}-${file.name}`;
+    const { error } = await supabaseClient.storage.from("resume-photos").upload(path, file);
+    if (error) { alert("Photo upload failed: " + error.message); return; }
+    const { data } = supabaseClient.storage.from("resume-photos").getPublicUrl(path);
+    uploadedPhotoUrl = data.publicUrl;
+    updatePreview();
+  });
+
+  /* ---------- Override live preview to include template + photo ---------- */
+  const baseUpdatePreview = updatePreview;
+  updatePreview = function () {
+    baseUpdatePreview();
+    const preview = document.getElementById("resumePreview");
+    preview.classList.toggle("template-creative", selectedTemplate === "creative");
+    if (selectedTemplate === "creative" && uploadedPhotoUrl) {
+      const img = document.createElement("img");
+      img.src = uploadedPhotoUrl;
+      img.className = "preview-photo";
+      preview.insertBefore(img, preview.firstChild);
+    }
+  };
+
+  /* ---------- Save resume to Supabase ---------- */
+  document.getElementById("saveResumeBtn").addEventListener("click", async () => {
+    const statusEl = document.getElementById("saveResumeStatus");
+    if (!currentUser) { statusEl.textContent = "Sign in with Google first to save resumes to your account."; return; }
+
+    const data = collectResumeData();
+    const jobDescription = document.getElementById("buildJobDescription").value.trim();
+    const title = data.fullName ? `${data.fullName} — ${jobDescription.slice(0, 40) || "Resume"}` : "Untitled resume";
+
+    statusEl.textContent = "Saving...";
+    const { error } = await supabaseClient.from("resumes").insert({
+      user_id: currentUser.id,
+      title,
+      template: selectedTemplate,
+      photo_url: uploadedPhotoUrl,
+      job_description: jobDescription,
+      resume_data: data,
+    });
+
+    statusEl.textContent = error ? `Could not save: ${error.message}` : "Saved!";
+    if (!error) loadMyResumes();
+  });
+
+  /* ---------- Load / list resumes ---------- */
+  async function loadMyResumes() {
+    const listEl = document.getElementById("myResumesList");
+    const { data, error } = await supabaseClient
+      .from("resumes")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) { listEl.innerHTML = `<p style="color:var(--warn);">${error.message}</p>`; return; }
+    if (!data.length) { listEl.innerHTML = `<p class="placeholder">No saved resumes yet — build one and hit "Save to my account".</p>`; return; }
+
+    listEl.innerHTML = data.map((r) => `
+      <div class="resume-row">
+        <div>
+          <div><strong>${escapeHtml(r.title)}</strong></div>
+          <div class="meta">${r.template} · saved ${new Date(r.created_at).toLocaleDateString()}</div>
+        </div>
+        <div class="actions">
+          <button class="secondary-btn" onclick="loadResumeIntoBuilder('${r.id}')">Load</button>
+          <button class="signout-btn" onclick="deleteResume('${r.id}')">Delete</button>
+        </div>
+      </div>
+    `).join("");
+  }
+
+  window.loadResumeIntoBuilder = async function (id) {
+    const { data, error } = await supabaseClient.from("resumes").select("*").eq("id", id).single();
+    if (error) { alert(error.message); return; }
+
+    const r = data.resume_data;
+    document.getElementById("fullName").value = r.fullName || "";
+    document.getElementById("email").value = r.email || "";
+    document.getElementById("phone").value = r.phone || "";
+    document.getElementById("location").value = r.location || "";
+    document.getElementById("summary").value = r.summary || "";
+    document.getElementById("skills").value = r.skills || "";
+    document.getElementById("buildJobDescription").value = data.job_description || "";
+
+    experienceList.innerHTML = "";
+    (r.experience || []).forEach((job) => {
+      const clone = experienceTemplate.content.cloneNode(true);
+      experienceList.appendChild(clone);
+      const block = experienceList.lastElementChild;
+      block.querySelector(".exp-title").value = job.title || "";
+      block.querySelector(".exp-company").value = job.company || "";
+      block.querySelector(".exp-dates").value = job.dates || "";
+      block.querySelector(".exp-bullets").value = (job.bullets || []).join("\n");
+    });
+
+    educationList.innerHTML = "";
+    (r.education || []).forEach((ed) => {
+      const clone = educationTemplate.content.cloneNode(true);
+      educationList.appendChild(clone);
+      const block = educationList.lastElementChild;
+      block.querySelector(".edu-degree").value = ed.degree || "";
+      block.querySelector(".edu-institution").value = ed.institution || "";
+      block.querySelector(".edu-dates").value = ed.dates || "";
+    });
+
+    selectedTemplate = data.template || "professional";
+    uploadedPhotoUrl = data.photo_url || null;
+    document.querySelectorAll(".template-option").forEach((o) => o.classList.toggle("selected", o.dataset.template === selectedTemplate));
+    document.getElementById("photoUploadField").style.display = selectedTemplate === "creative" ? "block" : "none";
+
+    attachBuilderListeners();
+    updatePreview();
+    document.querySelector('.tab-btn[data-tab="build"]').click();
+  };
+
+  window.deleteResume = async function (id) {
+    if (!confirm("Delete this resume? This can't be undone.")) return;
+    const { error } = await supabaseClient.from("resumes").delete().eq("id", id);
+    if (error) { alert(error.message); return; }
+    loadMyResumes();
+  };
+</script>
 <script>
   function assembleResumeTextForAI() {
     const data = collectResumeData();

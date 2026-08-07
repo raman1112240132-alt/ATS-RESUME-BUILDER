@@ -17,6 +17,7 @@
     --border: #E8D48A;
     --muted: #7A6B3E;
     --accent: #0B6E4F;
+<<<<<<< Updated upstream
     --accent-soft: #E3F3EC;
     --structure: #9A4B1F;
     --warn: #B42318;
@@ -28,6 +29,29 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+=======
+    --accent-light: #E3F3EC;
+    --accent-dark: #085A3F;
+    --structure: #9A4B1F;
+    --structure-light: #F5E8DE;
+    --gold: #D4A017;
+    --gold-light: #FCF3D9;
+    --gold-dark: #B8890A;
+    --warn: #B42318;
+    --warn-soft: #FBEAE8;
+    --radius: 12px;
+    --shadow-sm: 0 2px 8px rgba(43,36,17,0.06);
+    --shadow-md: 0 8px 32px rgba(43,36,17,0.10);
+    --shadow-lg: 0 20px 60px rgba(43,36,17,0.15);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+  }
+>>>>>>> Stashed changes
 
   html { scroll-behavior: smooth; }
 
@@ -39,12 +63,110 @@
     margin: 0;
     padding: 0 20px 60px;
     min-height: 100vh;
+<<<<<<< Updated upstream
   }
 
   a { color: inherit; text-decoration: none; }
   :focus-visible { outline: 2px solid var(--structure); outline-offset: 2px; }
 
   .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ===== WARLI HEADER ===== */
+  .warli-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0 8px;
+    flex-wrap: wrap;
+    gap: 12px;
+=======
+    line-height: 1.6;
+  }
+
+  /* Prevent screenshots */
+  * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  input, textarea {
+    -webkit-user-select: text;
+    user-select: text;
+>>>>>>> Stashed changes
+  }
+  .warli-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--ink);
+  }
+  .warli-brand svg { width: 36px; height: 36px; flex-shrink: 0; }
+
+<<<<<<< Updated upstream
+=======
+  @media print {
+    body * { display: none !important; }
+    body::after {
+      content: "📄 Please log in to download your resume. WarliResume protects your data.";
+      display: block;
+      text-align: center;
+      font-size: 20px;
+      padding: 40px;
+      font-family: 'Poppins', sans-serif;
+    }
+  }
+
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid var(--structure); outline-offset: 2px; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ===== UTILITY ===== */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .login-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    background: var(--gold-light);
+    border: 2px solid var(--gold);
+    border-radius: var(--radius);
+    text-align: center;
+    gap: 12px;
+  }
+  .login-prompt .icon { font-size: 40px; }
+  .login-prompt h3 { font-family: 'Poppins', sans-serif; font-size: 17px; }
+  .login-prompt p { color: var(--muted); max-width: 400px; font-size: 14px; }
+  .login-prompt .login-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 28px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .login-prompt .login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
 
   /* ===== WARLI HEADER ===== */
   .warli-header {
@@ -61,11 +183,14 @@
     gap: 12px;
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
-    font-size: 20px;
+    font-size: 22px;
     color: var(--ink);
+    transition: var(--transition);
   }
-  .warli-brand svg { width: 36px; height: 36px; flex-shrink: 0; }
+  .warli-brand:hover { transform: scale(1.02); }
+  .warli-brand svg { width: 38px; height: 38px; flex-shrink: 0; }
 
+>>>>>>> Stashed changes
   /* ===== HERO ===== */
   header.hero {
     padding: 20px 0 28px;
@@ -75,7 +200,11 @@
     position: absolute;
     right: 0;
     top: 0;
+<<<<<<< Updated upstream
     opacity: 0.12;
+=======
+    opacity: 0.10;
+>>>>>>> Stashed changes
     pointer-events: none;
     width: 300px;
     height: 300px;
@@ -88,9 +217,16 @@
     color: var(--accent);
     font-weight: 600;
     display: inline-block;
+<<<<<<< Updated upstream
     background: var(--accent-soft);
     padding: 4px 14px;
     border-radius: 999px;
+=======
+    background: var(--accent-light);
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 4px;
+>>>>>>> Stashed changes
   }
   header.hero h1 {
     font-family: 'Poppins', sans-serif;
@@ -101,6 +237,7 @@
     line-height: 1.1;
     max-width: 720px;
   }
+<<<<<<< Updated upstream
   header.hero h1 .highlight { color: var(--structure); position: relative; }
   header.hero h1 .highlight::after {
     content: '';
@@ -110,6 +247,20 @@
     right: 0;
     height: 6px;
     background: var(--gold-soft);
+=======
+  header.hero h1 .highlight { 
+    color: var(--structure); 
+    position: relative; 
+  }
+  header.hero h1 .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: var(--gold-light);
+>>>>>>> Stashed changes
     border-radius: 4px;
     z-index: -1;
   }
@@ -117,7 +268,11 @@
     color: var(--muted);
     font-size: 17px;
     max-width: 580px;
+<<<<<<< Updated upstream
     line-height: 1.6;
+=======
+    line-height: 1.7;
+>>>>>>> Stashed changes
     margin: 0 0 20px;
   }
 
@@ -129,6 +284,7 @@
     font-size: 12.5px;
     color: var(--structure);
     margin: 6px 0 18px;
+<<<<<<< Updated upstream
   }
   .flow-steps .step {
     display: flex;
@@ -153,6 +309,44 @@
     font-weight: 700;
   }
   .flow-steps .arrow { color: var(--accent); font-size: 16px; font-weight: 700; }
+=======
+  }
+  .flow-steps .step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 18px;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+  .flow-steps .step:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+  }
+  .flow-steps .step .num {
+    background: var(--accent);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .flow-steps .arrow { 
+    color: var(--accent); 
+    font-size: 18px; 
+    font-weight: 700;
+    opacity: 0.6;
+  }
+>>>>>>> Stashed changes
 
   .trust-strip {
     display: flex;
@@ -160,6 +354,7 @@
     gap: 18px 28px;
     margin-top: 16px;
     font-size: 13.5px;
+<<<<<<< Updated upstream
     padding: 14px 20px;
     background: var(--surface);
     border-radius: var(--radius);
@@ -171,6 +366,33 @@
     color: var(--accent);
     font-weight: 700;
     font-size: 16px;
+=======
+    padding: 16px 24px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+  }
+  .trust-strip:hover { box-shadow: var(--shadow-md); }
+  .trust-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-weight: 500;
+  }
+  .trust-item .check {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 18px;
+    background: var(--accent-light);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+>>>>>>> Stashed changes
   }
 
   /* ===== ATS EDUCATION SECTION ===== */
@@ -178,12 +400,23 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
+<<<<<<< Updated upstream
     padding: 28px 32px;
     margin: 24px 0 32px;
     box-shadow: var(--shadow);
     position: relative;
     overflow: hidden;
   }
+=======
+    padding: 32px 36px;
+    margin: 24px 0 32px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+  .ats-education:hover { box-shadow: var(--shadow-md); }
+>>>>>>> Stashed changes
   .ats-education::before {
     content: '';
     position: absolute;
@@ -191,7 +424,11 @@
     top: -40px;
     width: 160px;
     height: 160px;
+<<<<<<< Updated upstream
     opacity: 0.06;
+=======
+    opacity: 0.05;
+>>>>>>> Stashed changes
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 80 L20 30 L30 30 L30 80 L20 80 M35 80 L35 30 L45 30 L45 80 L35 80 M50 80 L50 30 L60 30 L60 80 L50 80 M65 80 L65 30 L75 30 L75 80 L65 80 M80 80 L80 30 L90 30 L90 80 L80 80' stroke='%232B2411' stroke-width='2' fill='none'/%3E%3C/svg%3E");
     background-size: cover;
     pointer-events: none;
@@ -200,6 +437,7 @@
     position: absolute;
     left: 12px;
     bottom: 12px;
+<<<<<<< Updated upstream
     opacity: 0.08;
   }
   .ats-education h2 {
@@ -210,24 +448,49 @@
     display: flex;
     align-items: center;
     gap: 10px;
+=======
+    opacity: 0.06;
+  }
+  .ats-education h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+>>>>>>> Stashed changes
   }
   .ats-education h2 .badge {
     background: var(--gold);
     color: white;
     font-size: 11px;
+<<<<<<< Updated upstream
     padding: 2px 12px;
     border-radius: 999px;
     font-weight: 600;
+=======
+    padding: 3px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+>>>>>>> Stashed changes
   }
   .ats-education .grid-2col {
     display: grid;
     grid-template-columns: 1fr 1fr;
+<<<<<<< Updated upstream
     gap: 24px;
+=======
+    gap: 28px;
+>>>>>>> Stashed changes
     margin-top: 8px;
   }
   .ats-education .stat-box {
     background: var(--paper);
     border-radius: var(--radius);
+<<<<<<< Updated upstream
     padding: 16px 20px;
     border-left: 4px solid var(--accent);
   }
@@ -236,15 +499,33 @@
     font-size: 28px;
     font-weight: 800;
     color: var(--structure);
+=======
+    padding: 18px 22px;
+    border-left: 5px solid var(--accent);
+    transition: var(--transition);
+  }
+  .ats-education .stat-box:hover { transform: translateX(4px); }
+  .ats-education .stat-box .number {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--structure);
+    line-height: 1.2;
+>>>>>>> Stashed changes
   }
   .ats-education .stat-box .label {
     font-size: 13px;
     color: var(--muted);
     font-weight: 500;
+<<<<<<< Updated upstream
+=======
+    margin-top: 2px;
+>>>>>>> Stashed changes
   }
   .ats-education ul {
     list-style: none;
     padding: 0;
+<<<<<<< Updated upstream
     margin: 8px 0 0;
   }
   .ats-education ul li {
@@ -253,6 +534,16 @@
     background-size: 18px;
     font-size: 14px;
     line-height: 1.5;
+=======
+    margin: 10px 0 0;
+  }
+  .ats-education ul li {
+    padding: 8px 0 8px 32px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%230B6E4F' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E") left center no-repeat;
+    background-size: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+>>>>>>> Stashed changes
   }
   @media (max-width: 700px) {
     .ats-education .grid-2col { grid-template-columns: 1fr; }
@@ -269,25 +560,45 @@
     margin-top: 8px;
     gap: 4px;
     flex-wrap: wrap;
+<<<<<<< Updated upstream
+=======
+    box-shadow: var(--shadow-sm);
+>>>>>>> Stashed changes
   }
   .tab-btn {
     background: none;
     border: none;
+<<<<<<< Updated upstream
     padding: 10px 22px;
+=======
+    padding: 10px 24px;
+>>>>>>> Stashed changes
     font-size: 13.5px;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
     color: var(--muted);
     cursor: pointer;
     border-radius: 999px;
+<<<<<<< Updated upstream
     transition: all 0.2s ease;
+=======
+    transition: var(--transition);
   }
-  .tab-btn.active { color: var(--surface); background: var(--ink); }
-  .tab-btn:hover:not(.active) { background: var(--paper); }
+  .tab-btn.active { 
+    color: var(--surface); 
+    background: var(--ink); 
+    box-shadow: var(--shadow-sm);
+  }
+  .tab-btn:hover:not(.active) { 
+    background: var(--paper);
+    transform: translateY(-1px);
+>>>>>>> Stashed changes
+  }
 
-  .tab-panel { display: none; margin-top: 28px; }
+  .tab-panel { display: none; margin-top: 28px; animation: fadeIn 0.3s ease; }
   .tab-panel.active { display: block; }
 
+<<<<<<< Updated upstream
   /* ===== GRID ===== */
   .grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
   @media (min-width: 840px) { .grid { grid-template-columns: 1fr 1fr; } }
@@ -300,12 +611,53 @@
     width: 100%;
     padding: 11px 14px;
     border: 1.5px solid var(--border);
+=======
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== GRID ===== */
+  .grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 28px; 
+    align-items: start; 
+  }
+  @media (min-width: 840px) { 
+    .grid { 
+      grid-template-columns: 1fr 1fr; 
+    }
+  }
+
+  /* ===== FORM ELEMENTS ===== */
+  label { 
+    display: block; 
+    font-size: 13px; 
+    font-weight: 600; 
+    margin-bottom: 6px; 
+    color: var(--ink);
+    clear: both;
+  }
+  .hint { 
+    font-size: 12.5px; 
+    color: var(--muted); 
+    margin: -4px 0 8px; 
+    font-weight: 400; 
+  }
+
+  input[type=text], input[type=email], input[type=password], textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+>>>>>>> Stashed changes
     border-radius: var(--radius);
     font-size: 14px;
     font-family: inherit;
     background: var(--surface);
     resize: vertical;
     margin-bottom: 14px;
+<<<<<<< Updated upstream
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   input:focus, textarea:focus {
@@ -313,6 +665,20 @@
     box-shadow: 0 0 0 4px rgba(154,75,31,0.08);
     outline: none;
   }
+=======
+    transition: var(--transition);
+    -webkit-user-select: text;
+    user-select: text;
+    display: block;
+    clear: both;
+  }
+  input:focus, textarea:focus {
+    border-color: var(--structure);
+    box-shadow: 0 0 0 4px rgba(154,75,31,0.08);
+    outline: none;
+  }
+  input:hover, textarea:hover { border-color: var(--muted); }
+>>>>>>> Stashed changes
   #resumeText { height: 260px; }
   #jobDescription { height: 150px; }
 
@@ -321,12 +687,17 @@
     background: var(--ink);
     color: white;
     border: none;
+<<<<<<< Updated upstream
     padding: 11px 22px;
+=======
+    padding: 12px 24px;
+>>>>>>> Stashed changes
     border-radius: var(--radius);
     font-size: 13.5px;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
     cursor: pointer;
+<<<<<<< Updated upstream
     transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
@@ -346,11 +717,86 @@
   .gold-btn:hover:not(:disabled) { box-shadow: 0 6px 24px rgba(212,160,23,0.35); }
 
   .outline-btn { background: transparent; color: var(--structure); border: 1.5px solid var(--structure); }
+=======
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+    opacity: 0;
+    transition: var(--transition);
+  }
+  button:hover:not(:disabled)::after { opacity: 1; }
+  button:hover:not(:disabled) { 
+    transform: translateY(-3px); 
+    box-shadow: var(--shadow-md);
+  }
+  button:active:not(:disabled) { transform: scale(0.97) translateY(0); }
+  button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .accent-btn { 
+    background: var(--accent); 
+    box-shadow: 0 2px 12px rgba(11,110,79,0.25);
+  }
+  .accent-btn:hover:not(:disabled) { 
+    box-shadow: 0 6px 28px rgba(11,110,79,0.35);
+    background: var(--accent-dark);
+  }
+
+  .secondary-btn { 
+    background: var(--surface); 
+    color: var(--ink); 
+    border: 2px solid var(--border);
+  }
+  .secondary-btn:hover:not(:disabled) { 
+    background: var(--paper);
+    border-color: var(--accent);
+  }
+
+  .gold-btn { 
+    background: var(--gold); 
+    color: white;
+    box-shadow: 0 2px 12px rgba(212,160,23,0.3);
+  }
+  .gold-btn:hover:not(:disabled) { 
+    box-shadow: 0 6px 28px rgba(212,160,23,0.4);
+    background: var(--gold-dark);
+  }
+
+  .outline-btn { 
+    background: transparent; 
+    color: var(--structure); 
+    border: 2px solid var(--structure);
+  }
+  .outline-btn:hover:not(:disabled) {
+    background: var(--structure);
+    color: white;
+  }
+
+  .danger-btn {
+    background: var(--warn-soft);
+    color: var(--warn);
+    border: 2px solid var(--warn-soft);
+  }
+  .danger-btn:hover:not(:disabled) {
+    background: var(--warn);
+    color: white;
+    border-color: var(--warn);
+  }
+>>>>>>> Stashed changes
 
   /* ===== CARDS ===== */
   .card {
     border: 1px solid var(--border);
     border-radius: var(--radius);
+<<<<<<< Updated upstream
     padding: 20px;
     margin-bottom: 16px;
     background: var(--surface);
@@ -359,12 +805,33 @@
   }
   .card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(43,36,17,0.08); }
   .card h2 { font-family: 'Poppins', sans-serif; font-size: 15px; margin: 0 0 14px; font-weight: 600; }
+=======
+    padding: 22px;
+    margin-bottom: 16px;
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    overflow: hidden;
+  }
+  .card:hover { 
+    transform: translateY(-3px); 
+    box-shadow: var(--shadow-md);
+  }
+  .card h2 { 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 16px; 
+    margin: 0 0 14px; 
+    font-weight: 600;
+    color: var(--structure);
+  }
+>>>>>>> Stashed changes
 
   .placeholder {
     color: var(--muted);
     font-size: 14px;
     border: 2px dashed var(--border);
     border-radius: var(--radius);
+<<<<<<< Updated upstream
     padding: 40px 20px;
     text-align: center;
   }
@@ -384,6 +851,67 @@
   .gauge-number small { font-size: 12px; font-weight: 400; color: var(--muted); }
   .gauge-label-block h2 { margin-bottom: 2px; font-size: 16px; }
   .gauge-label-block .verdict { font-size: 13px; font-weight: 600; font-family: 'IBM Plex Mono', monospace; }
+=======
+    padding: 48px 24px;
+    text-align: center;
+    background: var(--surface);
+    transition: var(--transition);
+  }
+
+  /* ===== GAUGE ===== */
+  .gauge-row { 
+    display: flex; 
+    align-items: center; 
+    gap: 28px; 
+    flex-wrap: wrap; 
+  }
+  .gauge-wrap { 
+    position: relative; 
+    width: 120px; 
+    height: 120px; 
+    flex-shrink: 0; 
+  }
+  .gauge-wrap svg { transform: rotate(-90deg); }
+  .gauge-track { 
+    fill: none; 
+    stroke: var(--paper); 
+    stroke-width: 8; 
+  }
+  .gauge-fill { 
+    fill: none; 
+    stroke-width: 8; 
+    stroke-linecap: round; 
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); 
+  }
+  .gauge-number {
+    position: absolute; 
+    inset: 0;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 26px; 
+    font-weight: 700;
+  }
+  .gauge-number small { 
+    font-size: 13px; 
+    font-weight: 400; 
+    color: var(--muted); 
+  }
+  .gauge-label-block h2 { 
+    margin-bottom: 4px; 
+    font-size: 17px; 
+  }
+  .gauge-label-block .verdict { 
+    font-size: 14px; 
+    font-weight: 600; 
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 4px 12px;
+    border-radius: 999px;
+    display: inline-block;
+  }
+>>>>>>> Stashed changes
 
   /* ===== TAGS ===== */
   .tag {
@@ -392,12 +920,18 @@
     background: var(--warn-soft);
     color: var(--warn);
     border-radius: 999px;
+<<<<<<< Updated upstream
     padding: 3px 12px;
+=======
+    padding: 4px 14px;
+>>>>>>> Stashed changes
     font-size: 12px;
     font-family: 'IBM Plex Mono', monospace;
     font-weight: 500;
     margin: 3px 4px 3px 0;
+    transition: var(--transition);
   }
+<<<<<<< Updated upstream
   .tag.matched { background: var(--accent-soft); color: var(--accent); }
   .tag.gold { background: var(--gold-soft); color: var(--gold); }
 
@@ -409,6 +943,41 @@
     margin-bottom: 12px;
     background: var(--paper);
     transition: border-color 0.2s ease;
+=======
+  .tag:hover { transform: translateY(-1px); }
+  .tag.matched { background: var(--accent-light); color: var(--accent); }
+  .tag.gold { background: var(--gold-light); color: var(--gold-dark); }
+
+  /* ===== ENTRY BLOCKS - FIXED ===== */
+  .entry-block {
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+    background: var(--paper);
+    transition: var(--transition);
+    overflow: hidden;
+    clear: both;
+  }
+  .entry-block:hover { 
+    border-color: var(--structure);
+    box-shadow: var(--shadow-sm);
+  }
+  .entry-block input, 
+  .entry-block textarea { 
+    margin-bottom: 10px; 
+    background: var(--surface);
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+  .entry-block .entry-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+    clear: both;
+>>>>>>> Stashed changes
   }
   .entry-block:hover { border-color: var(--structure); }
   .entry-block input, .entry-block textarea { margin-bottom: 8px; background: var(--surface); }
@@ -416,6 +985,7 @@
     background: var(--warn-soft);
     color: var(--warn);
     border: none;
+<<<<<<< Updated upstream
     padding: 5px 14px;
     font-size: 12px;
     border-radius: 6px;
@@ -425,15 +995,49 @@
   .ai-improve-bullets { background: var(--structure); padding: 5px 14px; font-size: 12px; margin: 4px 8px 0 0; }
 
   /* ===== PREVIEW ===== */
+=======
+    padding: 6px 16px;
+    font-size: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 0;
+  }
+  .remove-entry:hover {
+    background: var(--warn);
+    color: white;
+  }
+  .ai-improve-bullets { 
+    background: var(--structure); 
+    padding: 6px 16px; 
+    font-size: 12px; 
+    border-radius: 6px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .ai-improve-bullets:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+
+  /* ===== PREVIEW - FIXED ===== */
+>>>>>>> Stashed changes
   #resumePreview {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
+<<<<<<< Updated upstream
     padding: 28px;
+=======
+    padding: 32px;
+>>>>>>> Stashed changes
     font-size: 13px;
-    min-height: 320px;
+    min-height: 350px;
     position: sticky;
     top: 20px;
+<<<<<<< Updated upstream
     box-shadow: var(--shadow);
   }
   #resumePreview .warli-watermark {
@@ -455,11 +1059,92 @@
     display: block; margin: 0 auto 10px;
     border: 3px solid var(--gold);
   }
+=======
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    overflow: auto;
+    max-height: 80vh;
+  }
+  #resumePreview:hover { box-shadow: var(--shadow-md); }
+  #resumePreview .warli-watermark {
+    text-align: center;
+    opacity: 0.05;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-top: 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    clear: both;
+  }
+  #resumePreview h1 { 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 22px; 
+    text-align: center; 
+    margin-bottom: 2px; 
+    font-weight: 700; 
+  }
+  #resumePreview .contact-line { 
+    text-align: center; 
+    font-size: 11px; 
+    color: var(--muted); 
+    margin-bottom: 18px; 
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  #resumePreview h2 { 
+    font-size: 12px; 
+    text-transform: uppercase; 
+    letter-spacing: 0.08em;
+    border-bottom: 2px solid var(--border); 
+    padding-bottom: 6px; 
+    margin-top: 18px; 
+    color: var(--structure); 
+    font-weight: 700; 
+    clear: both;
+  }
+  #resumePreview .job-title { 
+    font-weight: 600; 
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  #resumePreview .job-dates { 
+    color: var(--muted); 
+    font-size: 11px; 
+    font-family: 'IBM Plex Mono', monospace; 
+  }
+  #resumePreview ul { 
+    margin: 6px 0; 
+    padding-left: 20px; 
+    list-style-type: disc;
+  }
+  #resumePreview ul li { 
+    margin-bottom: 2px; 
+    line-height: 1.5;
+  }
+  #resumePreview.template-creative { border-top: 5px solid var(--structure); }
+  #resumePreview .preview-photo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 12px;
+    border: 3px solid var(--gold);
+    box-shadow: var(--shadow-sm);
+  }
+  #resumePreview p {
+    margin: 6px 0;
+    line-height: 1.6;
+  }
+  #resumePreview .placeholder {
+    border: none;
+    padding: 20px;
+  }
+>>>>>>> Stashed changes
 
   /* ===== AI SUGGESTIONS ===== */
   .ai-suggestion {
     border: 1px solid var(--border);
     border-radius: var(--radius);
+<<<<<<< Updated upstream
     padding: 14px;
     margin-top: 10px;
     font-size: 13px;
@@ -470,10 +1155,53 @@
 
   /* ===== AUTH ===== */
   .auth-bar { position: relative; display: flex; justify-content: flex-end; align-items: center; gap: 10px; padding: 6px 0 0; font-size: 13px; flex-wrap: wrap; }
+=======
+    padding: 16px;
+    margin-top: 12px;
+    font-size: 13px;
+    background: var(--paper);
+    border-left: 4px solid var(--gold);
+    transition: var(--transition);
+    clear: both;
+    overflow: hidden;
+  }
+  .ai-suggestion:hover {
+    border-left-width: 6px;
+    box-shadow: var(--shadow-sm);
+  }
+  .ai-suggestion .apply-btn { 
+    background: var(--accent); 
+    padding: 6px 16px; 
+    font-size: 12px; 
+    border-radius: 6px; 
+    margin-top: 10px; 
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  .ai-suggestion .apply-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+
+  /* ===== AUTH ===== */
+  .auth-bar { 
+    position: relative; 
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    gap: 12px; 
+    padding: 6px 0 0; 
+    font-size: 13px; 
+    flex-wrap: wrap; 
+  }
+>>>>>>> Stashed changes
   .auth-panel {
     position: absolute;
     right: 0;
     top: 50px;
+<<<<<<< Updated upstream
     width: 300px;
     background: var(--surface);
     border: 1px solid var(--border);
@@ -492,6 +1220,84 @@
   .google-btn:hover { background: var(--paper); }
   .user-chip { font-size: 13px; color: var(--muted); background: var(--paper); padding: 4px 14px; border-radius: 999px; }
   .signout-btn { background: var(--surface); color: var(--warn); border: 1.5px solid var(--warn-soft); padding: 6px 14px; font-size: 12px; }
+=======
+    width: 320px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-lg);
+    z-index: 100;
+    animation: fadeIn 0.2s ease;
+  }
+  .auth-panel input { margin-bottom: 12px; }
+  .auth-panel .auth-error { 
+    color: var(--warn); 
+    font-size: 12.5px; 
+    margin: -4px 0 10px; 
+    display: none; 
+  }
+  .auth-panel .auth-switch { 
+    font-size: 12.5px; 
+    color: var(--muted); 
+    text-align: center; 
+    margin-top: 12px; 
+  }
+  .auth-panel .auth-switch a { 
+    color: var(--structure); 
+    cursor: pointer; 
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  .auth-panel .auth-switch a:hover { color: var(--accent); }
+  .auth-divider { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 11px; 
+    color: var(--muted); 
+    margin: 14px 0; 
+  }
+  .auth-divider::before, .auth-divider::after { 
+    content: ""; 
+    flex: 1; 
+    height: 1px; 
+    background: var(--border); 
+  }
+  .google-btn { 
+    width: 100%; 
+    justify-content: center; 
+    background: var(--surface); 
+    color: var(--ink); 
+    border: 2px solid var(--border);
+  }
+  .google-btn:hover { 
+    background: var(--paper);
+    border-color: var(--accent);
+  }
+  .user-chip { 
+    font-size: 13px; 
+    color: var(--muted); 
+    background: var(--paper); 
+    padding: 6px 16px; 
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .signout-btn { 
+    background: var(--surface); 
+    color: var(--warn); 
+    border: 2px solid var(--warn-soft); 
+    padding: 6px 16px; 
+    font-size: 12px; 
+  }
+  .signout-btn:hover { 
+    background: var(--warn); 
+    color: white;
+    border-color: var(--warn);
+  }
+>>>>>>> Stashed changes
 
   /* ===== MY RESUMES ===== */
   .resume-row {
@@ -500,6 +1306,7 @@
     align-items: center;
     border: 1px solid var(--border);
     border-radius: var(--radius);
+<<<<<<< Updated upstream
     padding: 14px 18px;
     margin-bottom: 10px;
     background: var(--surface);
@@ -510,12 +1317,42 @@
   .resume-row .meta { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
   .resume-row .actions { display: flex; gap: 6px; flex-wrap: wrap; }
   .resume-row .actions button { padding: 6px 14px; font-size: 12px; }
+=======
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+    flex-wrap: wrap;
+    gap: 12px;
+    transition: var(--transition);
+    clear: both;
+  }
+  .resume-row:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+  }
+  .resume-row .meta { 
+    font-size: 12.5px; 
+    color: var(--muted); 
+    margin-top: 2px; 
+  }
+  .resume-row .actions { 
+    display: flex; 
+    gap: 8px; 
+    flex-wrap: wrap; 
+  }
+  .resume-row .actions button { 
+    padding: 6px 16px; 
+    font-size: 12px; 
+  }
+>>>>>>> Stashed changes
   .signed-out-note {
     text-align: center;
-    padding: 50px 20px;
+    padding: 60px 20px;
     color: var(--muted);
     border: 2px dashed var(--border);
     border-radius: var(--radius);
+<<<<<<< Updated upstream
   }
 
   /* ===== TEMPLATE SELECTOR ===== */
@@ -536,31 +1373,106 @@
 
   /* ===== FIELD TOOLBAR ===== */
   .field-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px; }
+=======
+    background: var(--surface);
+  }
+
+  /* ===== TEMPLATE SELECTOR ===== */
+  .template-grid { 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap; 
+    margin-bottom: 16px; 
+    clear: both;
+  }
+  .template-option {
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 18px;
+    font-size: 12.5px;
+    cursor: pointer;
+    background: var(--surface);
+    transition: var(--transition);
+    font-weight: 500;
+    flex: 0 1 auto;
+  }
+  .template-option:hover { 
+    border-color: var(--accent); 
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+  .template-option.selected { 
+    border-color: var(--accent); 
+    background: var(--accent-light); 
+    color: var(--accent); 
+    font-weight: 600;
+    box-shadow: 0 0 0 3px var(--accent-light);
+  }
+  #photoUploadField { display: none; clear: both; }
+
+  /* ===== FIELD TOOLBAR ===== */
+  .field-toolbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 8px; 
+    flex-wrap: wrap; 
+    gap: 6px; 
+    clear: both;
+  }
+>>>>>>> Stashed changes
   .field-toolbar label { margin-bottom: 0; }
   .field-actions { display: flex; gap: 6px; flex-wrap: wrap; }
   .icon-btn {
     background: var(--surface);
     color: var(--muted);
     border: 1px solid var(--border);
+<<<<<<< Updated upstream
     padding: 4px 10px;
+=======
+    padding: 5px 12px;
+>>>>>>> Stashed changes
     font-size: 11.5px;
     border-radius: 6px;
     cursor: pointer;
     margin-top: 0;
+    transition: var(--transition);
   }
+  .icon-btn:hover:not(:disabled) { 
+    color: var(--ink); 
+    border-color: var(--structure); 
+    background: var(--paper);
+  }
+  .upload-status { 
+    font-size: 12px; 
+    color: var(--muted); 
+    margin: -8px 0 10px; 
+    clear: both;
+  }
+<<<<<<< Updated upstream
   .icon-btn:hover:not(:disabled) { color: var(--ink); border-color: var(--structure); background: var(--paper); }
   .upload-status { font-size: 12px; color: var(--muted); margin: -8px 0 10px; }
+=======
+>>>>>>> Stashed changes
   .upload-status.error { color: var(--warn); }
 
   /* ===== WARLI DECORATIONS ===== */
   .warli-divider {
     display: flex;
     justify-content: center;
+<<<<<<< Updated upstream
     gap: 12px;
     padding: 16px 0 8px;
     opacity: 0.3;
   }
   .warli-divider svg { width: 28px; height: 28px; }
+=======
+    gap: 14px;
+    padding: 16px 0 8px;
+    opacity: 0.25;
+  }
+  .warli-divider svg { width: 30px; height: 30px; }
+>>>>>>> Stashed changes
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 700px) {
@@ -570,6 +1482,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 92%;
+<<<<<<< Updated upstream
       max-width: 340px;
       margin-top: 0;
       z-index: 100;
@@ -579,10 +1492,38 @@
     .hero-warli-bg { display: none; }
     .trust-strip { font-size: 12px; padding: 12px 16px; }
     #resumePreview { position: relative; top: 0; }
+=======
+      max-width: 360px;
+      margin-top: 0;
+      z-index: 100;
+    }
+    .tabs { 
+      border-radius: var(--radius); 
+      width: 100%; 
+      overflow-x: auto; 
+      flex-wrap: nowrap;
+      padding: 4px;
+    }
+    .tab-btn { 
+      white-space: nowrap; 
+      flex: 1; 
+      text-align: center; 
+      font-size: 12px; 
+      padding: 8px 14px; 
+    }
+    .hero-warli-bg { display: none; }
+    .trust-strip { font-size: 12px; padding: 12px 16px; }
+    #resumePreview { 
+      position: relative; 
+      top: 0; 
+      max-height: none;
+    }
+>>>>>>> Stashed changes
     .gauge-row { flex-direction: column; align-items: center; text-align: center; }
     .flow-steps .arrow { display: none; }
     .flow-steps { gap: 6px; }
     .flow-steps .step { font-size: 11px; padding: 5px 12px; }
+<<<<<<< Updated upstream
     .warli-brand { font-size: 16px; }
     .warli-header { flex-direction: column; align-items: flex-start; }
   }
@@ -594,6 +1535,22 @@
   /* Scrollbar */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--paper); }
+=======
+    .warli-brand { font-size: 17px; }
+    .warli-header { flex-direction: column; align-items: flex-start; }
+    .ats-education h2 { font-size: 18px; }
+    .ats-education h2 .badge { font-size: 10px; padding: 2px 10px; }
+    .entry-block { padding: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--paper); border-radius: 99px; }
+>>>>>>> Stashed changes
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--structure); }
 </style>
@@ -604,8 +1561,13 @@
 
   <!-- ===== WARLI HEADER ===== -->
   <div class="warli-header">
+<<<<<<< Updated upstream
     <div class="warli-brand">
       <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2.5">
+=======
+    <div class="warli-brand" role="banner">
+      <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+>>>>>>> Stashed changes
         <circle cx="30" cy="12" r="6" stroke="currentColor"/>
         <path d="M30 18 L22 34 L30 29 L38 34 Z" stroke="currentColor" stroke-linejoin="round"/>
         <line x1="30" y1="29" x2="20" y2="48" stroke="currentColor"/>
@@ -619,6 +1581,7 @@
         <circle cx="38" cy="38" r="2" stroke="currentColor"/>
       </svg>
       <span>Warli<span style="color:var(--structure);">Resume</span></span>
+<<<<<<< Updated upstream
     </div>
     <div class="auth-bar" id="authBar">
       <button class="secondary-btn" id="loginBtn" style="padding:7px 16px;font-size:12.5px;">Log in</button>
@@ -631,12 +1594,31 @@
           <div id="authTitle" style="font-weight:700;font-size:15px;margin-bottom:10px;font-family:'Poppins',sans-serif;">Log in</div>
           <input type="email" id="authEmail" placeholder="Email" required />
           <input type="password" id="authPassword" placeholder="Password" required minlength="6" />
+=======
+      <span style="font-size:11px;color:var(--muted);font-weight:400;font-family:'Inter',sans-serif;background:var(--paper);padding:2px 10px;border-radius:999px;">ATS Builder</span>
+    </div>
+    <div class="auth-bar" id="authBar">
+      <button class="secondary-btn" id="loginBtn" style="padding:7px 18px;font-size:12.5px;">🔐 Log in</button>
+      <button class="accent-btn" id="signupBtn" style="padding:7px 18px;font-size:12.5px;">✨ Sign up</button>
+      <span class="user-chip" id="userChip" style="display:none;"></span>
+      <button class="signout-btn" id="signOutBtn" style="display:none;">Sign out</button>
+
+      <div class="auth-panel" id="authPanel" style="display:none;" role="dialog" aria-label="Authentication">
+        <form id="authForm">
+          <div id="authTitle" style="font-weight:700;font-size:16px;margin-bottom:12px;font-family:'Poppins',sans-serif;">🔐 Log in</div>
+          <input type="email" id="authEmail" placeholder="Email" required aria-label="Email" />
+          <input type="password" id="authPassword" placeholder="Password" required minlength="6" aria-label="Password" />
+>>>>>>> Stashed changes
           <div class="auth-error" id="authError"></div>
           <button type="submit" class="accent-btn" style="width:100%;" id="authSubmitBtn">Log in</button>
         </form>
         <div class="auth-divider">or</div>
         <button type="button" class="google-btn" id="googleSignInBtn">
+<<<<<<< Updated upstream
           <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.6 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4c-7.6 0-14.2 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.3 0 10.1-2 13.7-5.4l-6.3-5.3C29.4 35 26.8 36 24 36c-5.4 0-9.9-3.4-11.6-8.2l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1 3-3.1 5.5-5.9 7.2l6.3 5.3C39.8 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
+=======
+          <svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.6 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6.1 29.5 4 24 4c-7.6 0-14.2 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.3 0 10.1-2 13.7-5.4l-6.3-5.3C29.4 35 26.8 36 24 36c-5.4 0-9.9-3.4-11.6-8.2l-6.5 5C9.6 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1 3-3.1 5.5-5.9 7.2l6.3 5.3C39.8 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
+>>>>>>> Stashed changes
           Continue with Google
         </button>
         <div class="auth-switch" id="authSwitch">Don't have an account? <a id="authSwitchLink">Sign up</a></div>
@@ -645,8 +1627,13 @@
   </div>
 
   <!-- ===== HERO ===== -->
+<<<<<<< Updated upstream
   <header class="hero">
     <div class="hero-warli-bg">
+=======
+  <header class="hero" role="banner">
+    <div class="hero-warli-bg" aria-hidden="true">
+>>>>>>> Stashed changes
       <svg viewBox="0 0 200 200" stroke="var(--structure)" stroke-width="1.5" fill="none">
         <circle cx="100" cy="40" r="18"/>
         <path d="M100 58 L70 94 L100 82 L130 94 Z"/>
@@ -672,6 +1659,7 @@
     <h1>Know if your resume <br><span class="highlight">actually gets shortlisted.</span></h1>
     <p class="subhead">Real ATS shortlisting odds — not just a nicer-looking resume. See exactly how well you match the job description, then fix what's missing with AI.</p>
 
+<<<<<<< Updated upstream
     <div class="flow-steps">
       <span class="step"><span class="num">1</span> Scan your resume</span>
       <span class="arrow">→</span>
@@ -687,19 +1675,45 @@
       <span class="trust-item"><span class="check">✓</span> Real JD-matching, not a guess</span>
       <span class="trust-item"><span class="check">✓</span> ATS-safe formatting built in</span>
       <span class="trust-item"><span class="check">✓</span> AI-powered rewrites</span>
+=======
+    <div class="flow-steps" role="list">
+      <span class="step" role="listitem"><span class="num">1</span> Scan your resume</span>
+      <span class="arrow" aria-hidden="true">→</span>
+      <span class="step" role="listitem"><span class="num">2</span> Match it to the JD</span>
+      <span class="arrow" aria-hidden="true">→</span>
+      <span class="step" role="listitem"><span class="num">3</span> Improve the wording</span>
+      <span class="arrow" aria-hidden="true">→</span>
+      <span class="step" role="listitem"><span class="num">4</span> Get shortlisted 🎯</span>
+    </div>
+
+    <div class="trust-strip" role="list">
+      <span class="trust-item" role="listitem"><span class="check" aria-hidden="true">✓</span> Full download, no paywall trick</span>
+      <span class="trust-item" role="listitem"><span class="check" aria-hidden="true">✓</span> Real JD-matching, not a guess</span>
+      <span class="trust-item" role="listitem"><span class="check" aria-hidden="true">✓</span> ATS-safe formatting built in</span>
+      <span class="trust-item" role="listitem"><span class="check" aria-hidden="true">✓</span> AI-powered rewrites</span>
+>>>>>>> Stashed changes
     </div>
   </header>
 
   <!-- ===== WARLI DIVIDER ===== -->
+<<<<<<< Updated upstream
   <div class="warli-divider">
+=======
+  <div class="warli-divider" aria-hidden="true">
+>>>>>>> Stashed changes
     <svg viewBox="0 0 40 40" stroke="var(--structure)" stroke-width="1.8" fill="none"><circle cx="20" cy="10" r="5"/><path d="M20 15 L14 26 L20 22 L26 26 Z"/><line x1="20" y1="22" x2="14" y2="34"/><line x1="20" y1="22" x2="26" y2="34"/></svg>
     <svg viewBox="0 0 40 40" stroke="var(--structure)" stroke-width="1.8" fill="none"><circle cx="20" cy="18" r="6"/><circle cx="12" cy="30" r="3"/><circle cx="28" cy="30" r="3"/><line x1="20" y1="24" x2="12" y2="36"/><line x1="20" y1="24" x2="28" y2="36"/></svg>
     <svg viewBox="0 0 40 40" stroke="var(--structure)" stroke-width="1.8" fill="none"><path d="M20 4 L14 16 L20 12 L26 16 Z"/><circle cx="20" cy="30" r="4"/><line x1="20" y1="16" x2="20" y2="26"/><line x1="12" y1="20" x2="8" y2="20"/><line x1="28" y1="20" x2="32" y2="20"/></svg>
   </div>
 
   <!-- ===== ATS EDUCATION SECTION ===== -->
+<<<<<<< Updated upstream
   <div class="ats-education">
     <div class="warli-corner">
+=======
+  <section class="ats-education" aria-label="Why ATS matters">
+    <div class="warli-corner" aria-hidden="true">
+>>>>>>> Stashed changes
       <svg viewBox="0 0 80 80" width="60" height="60" stroke="var(--structure)" stroke-width="1.5" fill="none">
         <circle cx="40" cy="16" r="6"/><path d="M40 22 L32 38 L40 33 L48 38 Z"/><line x1="40" y1="33" x2="32" y2="50"/><line x1="40" y1="33" x2="48" y2="50"/><circle cx="32" cy="50" r="3"/><circle cx="48" cy="50" r="3"/><circle cx="20" cy="60" r="3"/><circle cx="40" cy="64" r="3"/><circle cx="60" cy="60" r="3"/>
       </svg>
@@ -743,6 +1757,7 @@
         </ul>
       </div>
     </div>
+<<<<<<< Updated upstream
   </div>
 
   <!-- ===== TABS ===== -->
@@ -754,29 +1769,60 @@
 
   <!-- ===== TAB: SCORE ===== -->
   <div class="tab-panel active" id="tab-score">
+=======
+  </section>
+
+  <!-- ===== TABS ===== -->
+  <nav class="tabs" role="tablist">
+    <button class="tab-btn active" data-tab="score" role="tab" aria-selected="true">📊 Score my resume</button>
+    <button class="tab-btn" data-tab="build" role="tab" aria-selected="false">✏️ Build my resume</button>
+    <button class="tab-btn" data-tab="myresumes" role="tab" aria-selected="false">📁 My resumes</button>
+  </nav>
+
+  <!-- ===== TAB: SCORE ===== -->
+  <section class="tab-panel active" id="tab-score" role="tabpanel">
+>>>>>>> Stashed changes
     <div class="grid">
       <div>
         <div class="field-toolbar">
           <label for="resumeText">📄 Your resume (plain text)</label>
           <div class="field-actions">
+<<<<<<< Updated upstream
             <button type="button" class="icon-btn" data-copy-target="resumeText">📋 Copy</button>
             <button type="button" class="icon-btn" onclick="document.getElementById('resumeFileInput').click()">📎 Upload</button>
+=======
+            <button type="button" class="icon-btn" data-copy-target="resumeText" aria-label="Copy resume text">📋 Copy</button>
+            <button type="button" class="icon-btn" onclick="document.getElementById('resumeFileInput').click()" aria-label="Upload resume file">📎 Upload</button>
+>>>>>>> Stashed changes
           </div>
         </div>
         <input type="file" id="resumeFileInput" accept=".pdf,.docx,.doc,image/*" style="display:none;" />
         <div class="upload-status" id="resumeUploadStatus"></div>
+<<<<<<< Updated upstream
         <textarea id="resumeText" placeholder="Paste your resume text here, or upload a PDF / DOCX / image..."></textarea>
+=======
+        <textarea id="resumeText" placeholder="Paste your resume text here, or upload a PDF / DOCX / image..." aria-label="Resume text"></textarea>
+>>>>>>> Stashed changes
 
         <div class="field-toolbar">
           <label for="jobDescription">📋 Job description</label>
           <div class="field-actions">
+<<<<<<< Updated upstream
             <button type="button" class="icon-btn" data-copy-target="jobDescription">📋 Copy</button>
             <button type="button" class="icon-btn" onclick="document.getElementById('jdFileInput').click()">📎 Upload</button>
+=======
+            <button type="button" class="icon-btn" data-copy-target="jobDescription" aria-label="Copy job description">📋 Copy</button>
+            <button type="button" class="icon-btn" onclick="document.getElementById('jdFileInput').click()" aria-label="Upload job description file">📎 Upload</button>
+>>>>>>> Stashed changes
           </div>
         </div>
         <input type="file" id="jdFileInput" accept=".pdf,.docx,.doc,image/*" style="display:none;" />
         <div class="upload-status" id="jdUploadStatus"></div>
+<<<<<<< Updated upstream
         <textarea id="jobDescription" placeholder="Paste the job description here..."></textarea>
+=======
+        <textarea id="jobDescription" placeholder="Paste the job description here..." aria-label="Job description text"></textarea>
+>>>>>>> Stashed changes
 
         <button id="scoreBtn" class="accent-btn">🎯 Score my resume</button>
         <div id="status" style="font-size:13.5px;color:var(--muted);margin-top:8px;"></div>
@@ -784,23 +1830,37 @@
 
       <div id="results">
         <div class="placeholder">
+<<<<<<< Updated upstream
           <div style="font-size:40px;margin-bottom:12px;">📊</div>
+=======
+          <div style="font-size:48px;margin-bottom:12px;">📊</div>
+>>>>>>> Stashed changes
           <strong>Paste your resume and a job description</strong><br>
           Then hit "Score my resume" — results will appear here.
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- ===== TAB: BUILD ===== -->
+<<<<<<< Updated upstream
   <div class="tab-panel" id="tab-build">
+=======
+  <section class="tab-panel" id="tab-build" role="tabpanel">
+>>>>>>> Stashed changes
     <div class="grid">
       <div>
         <label>🎨 Template</label>
         <div class="template-grid">
+<<<<<<< Updated upstream
           <div class="template-option selected" data-template="professional">💼 Professional (ATS-safe)</div>
           <div class="template-option" data-template="simple">📄 Simple / Fresher (ATS-safe)</div>
           <div class="template-option" data-template="creative">🖼️ Creative (with photo)</div>
+=======
+          <div class="template-option selected" data-template="professional" role="button">💼 Professional (ATS-safe)</div>
+          <div class="template-option" data-template="simple" role="button">📄 Simple / Fresher (ATS-safe)</div>
+          <div class="template-option" data-template="creative" role="button">🖼️ Creative (with photo)</div>
+>>>>>>> Stashed changes
         </div>
 
         <div id="photoUploadField">
@@ -835,6 +1895,7 @@
         <div class="upload-status" id="buildJdUploadStatus"></div>
         <div class="hint">Paste one to align your wording with it. Leave blank and the AI will still polish your sentences.</div>
         <textarea id="buildJobDescription" style="height:90px;" placeholder="Paste a job description here to align your resume..."></textarea>
+<<<<<<< Updated upstream
 
         <button type="button" id="aiEnhanceBtn" class="gold-btn">✨ AI Enhance Resume</button>
         <div id="aiEnhanceStatus" style="font-size:13px;color:var(--muted);margin-top:6px;"></div>
@@ -857,28 +1918,63 @@
           <button id="saveResumeBtn" class="gold-btn">💾 Save to my account</button>
         </div>
         <div id="saveResumeStatus" style="font-size:13px;color:var(--muted);margin-top:6px;"></div>
+=======
+
+        <div id="aiEnhanceSection">
+          <!-- This will show login prompt or AI button -->
+        </div>
+
+        <label style="margin-top:20px;display:block;clear:both;">💼 Experience</label>
+        <div id="experienceList" style="clear:both;"></div>
+        <button type="button" class="secondary-btn" id="addExperience" style="clear:both;">+ Add experience</button>
+
+        <label style="margin-top:20px;display:block;clear:both;">🎓 Education</label>
+        <div id="educationList" style="clear:both;"></div>
+        <button type="button" class="secondary-btn" id="addEducation" style="clear:both;">+ Add education</button>
+
+        <label style="margin-top:20px;display:block;clear:both;">🛠️ Skills (comma-separated)</label>
+        <textarea id="skills" style="height:60px;display:block;clear:both;"></textarea>
+
+        <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;clear:both;">
+          <button id="downloadResumePdfBtn" class="accent-btn">📄 Download PDF</button>
+          <button id="downloadResumeDocxBtn" class="secondary-btn">📝 Download Word</button>
+          <button id="saveResumeBtn" class="gold-btn">💾 Save to my account</button>
+        </div>
+        <div id="saveResumeStatus" style="font-size:13px;color:var(--muted);margin-top:6px;clear:both;"></div>
+>>>>>>> Stashed changes
       </div>
 
       <div>
         <label>👀 Live preview</label>
         <div id="resumePreview">
+<<<<<<< Updated upstream
           <div class="placeholder" style="border:none;padding:20px;">
             <div style="font-size:32px;margin-bottom:8px;">📄</div>
+=======
+          <div class="placeholder" style="border:none;padding:24px;">
+            <div style="font-size:36px;margin-bottom:10px;">📄</div>
+>>>>>>> Stashed changes
             Start adding your details — the preview will update live.
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- ===== TAB: MY RESUMES ===== -->
+<<<<<<< Updated upstream
   <div class="tab-panel" id="tab-myresumes">
     <div id="myResumesSignedOut" class="signed-out-note">
       <div style="font-size:36px;margin-bottom:8px;">🔐</div>
+=======
+  <section class="tab-panel" id="tab-myresumes" role="tabpanel">
+    <div id="myResumesSignedOut" class="signed-out-note">
+      <div style="font-size:40px;margin-bottom:10px;">🔐</div>
+>>>>>>> Stashed changes
       Sign in above to see and manage your saved resumes.
     </div>
     <div id="myResumesList" style="display:none;"></div>
-  </div>
+  </section>
 
 </div>
 
@@ -889,8 +1985,10 @@
     <input type="text" class="exp-company" placeholder="Company" />
     <input type="text" class="exp-dates" placeholder="Jan 2022 - Present" />
     <textarea class="exp-bullets" style="height:70px;" placeholder="One achievement per line..."></textarea>
-    <button type="button" class="ai-improve-bullets">✨ AI improve these bullets</button>
-    <button type="button" class="remove-entry">Remove</button>
+    <div class="entry-actions">
+      <button type="button" class="ai-improve-bullets">✨ AI improve these bullets</button>
+      <button type="button" class="remove-entry">🗑️ Remove</button>
+    </div>
   </div>
 </template>
 
@@ -899,7 +1997,9 @@
     <input type="text" class="edu-degree" placeholder="Degree" />
     <input type="text" class="edu-institution" placeholder="Institution" />
     <input type="text" class="edu-dates" placeholder="2018 - 2022" />
-    <button type="button" class="remove-entry">Remove</button>
+    <div class="entry-actions">
+      <button type="button" class="remove-entry">🗑️ Remove</button>
+    </div>
   </div>
 </template>
 
@@ -930,6 +2030,39 @@
   }
 
   // ============================================================
+<<<<<<< Updated upstream
+=======
+  // PREVENT SCREENSHOTS
+  // ============================================================
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'PrintScreen') {
+      e.preventDefault();
+      alert('📸 Screenshots are disabled to protect your resume data.');
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) {
+      e.preventDefault();
+      return false;
+    }
+    if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert('📸 Right-click is disabled to protect your resume data.');
+  });
+
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+    }
+  });
+
+  // ============================================================
+>>>>>>> Stashed changes
   // STATE
   // ============================================================
   let currentUser = null;
@@ -945,6 +2078,7 @@
     const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
+<<<<<<< Updated upstream
   }
 
   function requireSupabase(action) {
@@ -1072,6 +2206,197 @@
     });
   }
 
+=======
+  }
+
+  function requireSupabase(action) {
+    if (!supabaseClient) {
+      alert(`⚠️ ${action} isn't available — the site owner needs to connect the account system first.`);
+      return false;
+    }
+    return true;
+  }
+
+  function isAuthenticated() {
+    return currentUser !== null;
+  }
+
+  function showLoginPrompt(containerId, message) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    
+    container.innerHTML = `
+      <div class="login-prompt">
+        <div class="icon">🔐</div>
+        <h3>${message || 'Login Required'}</h3>
+        <p>Sign in to access this feature. Your resume data is private and secure.</p>
+        <button class="login-btn" onclick="document.getElementById('loginBtn').click();">
+          🔐 Log in / Sign up
+        </button>
+      </div>
+    `;
+  }
+
+  function hideLoginPrompt(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = '';
+  }
+
+  // ============================================================
+  // COLLECT RESUME DATA
+  // ============================================================
+  function collectResumeData() {
+    return {
+      fullName: document.getElementById("fullName").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      location: document.getElementById("location").value.trim(),
+      summary: document.getElementById("summary").value.trim(),
+      skills: document.getElementById("skills").value.trim(),
+      experience: getExperienceData(),
+      education: getEducationData()
+    };
+  }
+
+  function getExperienceData() {
+    const entries = document.querySelectorAll(".experience-entry");
+    return Array.from(entries).map(el => ({
+      title: el.querySelector(".exp-title").value.trim(),
+      company: el.querySelector(".exp-company").value.trim(),
+      dates: el.querySelector(".exp-dates").value.trim(),
+      bullets: el.querySelector(".exp-bullets").value.split("\n").filter(b => b.trim())
+    }));
+  }
+
+  function getEducationData() {
+    const entries = document.querySelectorAll(".education-entry");
+    return Array.from(entries).map(el => ({
+      degree: el.querySelector(".edu-degree").value.trim(),
+      institution: el.querySelector(".edu-institution").value.trim(),
+      dates: el.querySelector(".edu-dates").value.trim()
+    }));
+  }
+
+  function assembleResumeTextForAI() {
+    const data = collectResumeData();
+    let text = `${data.fullName}\n${data.email} ${data.phone} ${data.location}\n\n`;
+    if (data.summary) text += `Summary\n${data.summary}\n\n`;
+    if (data.experience.length) {
+      text += "Experience\n";
+      data.experience.forEach(job => {
+        text += `${job.title} — ${job.company} (${job.dates})\n`;
+        job.bullets.forEach(b => text += `- ${b}\n`);
+      });
+      text += "\n";
+    }
+    if (data.education.length) {
+      text += "Education\n";
+      data.education.forEach(ed => {
+        text += `${ed.degree} — ${ed.institution} (${ed.dates})\n`;
+      });
+      text += "\n";
+    }
+    if (data.skills) text += `Skills\n${data.skills}\n`;
+    return text;
+  }
+
+  // ============================================================
+  // UPDATE PREVIEW - FIXED
+  // ============================================================
+  function updatePreview() {
+    const preview = document.getElementById("resumePreview");
+    const data = collectResumeData();
+
+    let html = '';
+
+    // Photo for creative template
+    if (selectedTemplate === "creative" && uploadedPhotoUrl) {
+      html += `<img src="${uploadedPhotoUrl}" class="preview-photo" alt="Profile photo" />`;
+    }
+
+    html += `<h1>${escapeHtml(data.fullName || "Your Name")}</h1>`;
+    html += `<div class="contact-line">${escapeHtml(data.email)} • ${escapeHtml(data.phone)} • ${escapeHtml(data.location)}</div>`;
+
+    if (data.summary) {
+      html += `<h2>Professional Summary</h2><p>${escapeHtml(data.summary)}</p>`;
+    }
+
+    // Experience - Fixed to avoid nesting issues
+    if (data.experience.length) {
+      html += `<h2>Experience</h2>`;
+      data.experience.forEach(job => {
+        html += `<div class="job-title">${escapeHtml(job.title)} — ${escapeHtml(job.company)}</div>`;
+        html += `<div class="job-dates">${escapeHtml(job.dates)}</div>`;
+        if (job.bullets.length) {
+          html += `<ul>`;
+          job.bullets.forEach(b => {
+            if (b.trim()) {
+              html += `<li>${escapeHtml(b.trim())}</li>`;
+            }
+          });
+          html += `</ul>`;
+        }
+      });
+    }
+
+    // Education
+    if (data.education.length) {
+      html += `<h2>Education</h2>`;
+      data.education.forEach(ed => {
+        html += `<div><strong>${escapeHtml(ed.degree)}</strong> — ${escapeHtml(ed.institution)} <span style="color:var(--muted);font-size:11px;">(${escapeHtml(ed.dates)})</span></div>`;
+      });
+    }
+
+    if (data.skills) {
+      html += `<h2>Skills</h2><p>${escapeHtml(data.skills)}</p>`;
+    }
+
+    html += `<div class="warli-watermark">✦ WarliResume ✦</div>`;
+
+    preview.innerHTML = html;
+    preview.classList.toggle("template-creative", selectedTemplate === "creative");
+  }
+
+  // ============================================================
+  // UPDATE AI SECTION BASED ON AUTH
+  // ============================================================
+  function updateAISection() {
+    const container = document.getElementById("aiEnhanceSection");
+    if (!container) return;
+
+    if (isAuthenticated()) {
+      container.innerHTML = `
+        <button type="button" id="aiEnhanceBtn" class="gold-btn">✨ AI Enhance Resume</button>
+        <div id="aiEnhanceStatus" style="font-size:13px;color:var(--muted);margin-top:6px;"></div>
+        <div id="aiEnhanceResults"></div>
+      `;
+      document.getElementById("aiEnhanceBtn")?.addEventListener("click", () => runAiEnhance());
+    } else {
+      container.innerHTML = `
+        <div class="login-prompt" style="margin-bottom:12px;">
+          <div class="icon">🤖</div>
+          <h3>AI Enhancement Available</h3>
+          <p>Sign in to use AI to improve your resume bullet points.</p>
+          <button class="login-btn" onclick="document.getElementById('loginBtn').click();">
+            🔐 Log in to use AI
+          </button>
+        </div>
+      `;
+    }
+  }
+
+  // ============================================================
+  // ADD / REMOVE ENTRIES - FIXED
+  // ============================================================
+  function attachBuilderListeners() {
+    document.querySelectorAll("#tab-build input, #tab-build textarea").forEach(el => {
+      el.removeEventListener("input", updatePreview);
+      el.addEventListener("input", updatePreview);
+    });
+  }
+
+>>>>>>> Stashed changes
   document.getElementById("addExperience").addEventListener("click", () => {
     const template = document.getElementById("experienceTemplate");
     const clone = template.content.cloneNode(true);
@@ -1088,6 +2413,10 @@
     updatePreview();
   });
 
+<<<<<<< Updated upstream
+=======
+  // Delegated event for remove buttons
+>>>>>>> Stashed changes
   document.addEventListener("click", (e) => {
     if (e.target.classList.contains("remove-entry")) {
       e.target.closest(".entry-block").remove();
@@ -1095,6 +2424,20 @@
     }
   });
 
+<<<<<<< Updated upstream
+=======
+  // Delegated event for AI improve bullets
+  document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("ai-improve-bullets")) {
+      const block = e.target.closest(".experience-entry");
+      const bulletsEl = block.querySelector(".exp-bullets");
+      const bulletsText = bulletsEl.value.split("\n").filter(b => b.trim()).map(b => `- ${b}`).join("\n");
+      if (!bulletsText) { alert("Add at least one bullet point first."); return; }
+      runAiEnhance(`Bullet points to improve:\n${bulletsText}`);
+    }
+  });
+
+>>>>>>> Stashed changes
   // ============================================================
   // TEMPLATE SELECTION
   // ============================================================
@@ -1115,7 +2458,15 @@
     const file = e.target.files[0];
     if (!file) return;
     if (!requireSupabase("Photo upload")) return;
+<<<<<<< Updated upstream
     if (!currentUser) { alert("Sign in first so your photo can be saved."); return; }
+=======
+    if (!isAuthenticated()) {
+      alert("🔐 Please log in first to upload a photo.");
+      document.getElementById("loginBtn").click();
+      return;
+    }
+>>>>>>> Stashed changes
 
     const path = `${currentUser.id}/${Date.now()}-${file.name}`;
     const { error } = await supabaseClient.storage.from("resume-photos").upload(path, file);
@@ -1248,7 +2599,10 @@
       if (data.error) throw new Error(data.error);
       displayScoreResults(data, resultsEl, statusEl);
     } catch (err) {
+<<<<<<< Updated upstream
       // Fallback: client-side scoring
+=======
+>>>>>>> Stashed changes
       const score = calculateKeywordMatch(resume, jd);
       displayFallbackScore(score, resultsEl);
       statusEl.textContent = "📊 Using local scoring (server unavailable)";
@@ -1273,18 +2627,31 @@
       <div class="card">
         <div class="gauge-row">
           <div class="gauge-wrap">
+<<<<<<< Updated upstream
             <svg width="110" height="110" viewBox="0 0 110 110">
               <circle class="gauge-track" cx="55" cy="55" r="42"/>
               <circle class="gauge-fill" cx="55" cy="55" r="42" 
                       stroke="${score >= 70 ? 'var(--accent)' : score >= 40 ? 'var(--gold)' : 'var(--warn)'}" 
                       stroke-dasharray="${2 * Math.PI * 42}" 
                       stroke-dashoffset="${2 * Math.PI * 42 * (1 - score/100)}"/>
+=======
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle class="gauge-track" cx="60" cy="60" r="46"/>
+              <circle class="gauge-fill" cx="60" cy="60" r="46" 
+                      stroke="${score >= 70 ? 'var(--accent)' : score >= 40 ? 'var(--gold)' : 'var(--warn)'}" 
+                      stroke-dasharray="${2 * Math.PI * 46}" 
+                      stroke-dashoffset="${2 * Math.PI * 46 * (1 - score/100)}"/>
+>>>>>>> Stashed changes
             </svg>
             <div class="gauge-number">${score}<small>%</small></div>
           </div>
           <div class="gauge-label-block">
             <h2>ATS Match Score</h2>
+<<<<<<< Updated upstream
             <div class="verdict" style="color:${score >= 70 ? 'var(--accent)' : score >= 40 ? 'var(--gold)' : 'var(--warn)'}">
+=======
+            <div class="verdict" style="color:${score >= 70 ? 'var(--accent)' : score >= 40 ? 'var(--gold)' : 'var(--warn)'};background:${score >= 70 ? 'var(--accent-light)' : score >= 40 ? 'var(--gold-light)' : 'var(--warn-soft)'}">
+>>>>>>> Stashed changes
               ${score >= 70 ? '✅ Great match! You\'re likely to get shortlisted.' : 
                 score >= 40 ? '⚠️ Needs improvement — add more keywords from the JD.' : 
                 '❌ Low match — review the suggestions below.'}
@@ -1294,6 +2661,7 @@
       </div>
     `;
 
+<<<<<<< Updated upstream
     // Details
     if (details.keywordScore || details.densityScore || details.structureScore) {
       html += `<div class="card"><h2>📊 Breakdown</h2>`;
@@ -1305,6 +2673,17 @@
     }
 
     // Suggestions
+=======
+    if (details.keywordScore || details.densityScore || details.structureScore) {
+      html += `<div class="card"><h2>📊 Breakdown</h2>`;
+      html += `<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center;">`;
+      html += `<div><strong style="font-size:20px;">${details.keywordScore || 0}%</strong><br><span style="font-size:12px;color:var(--muted);">Keyword Match</span></div>`;
+      html += `<div><strong style="font-size:20px;">${details.densityScore || 0}%</strong><br><span style="font-size:12px;color:var(--muted);">Keyword Density</span></div>`;
+      html += `<div><strong style="font-size:20px;">${details.structureScore || 0}%</strong><br><span style="font-size:12px;color:var(--muted);">Structure</span></div>`;
+      html += `</div></div>`;
+    }
+
+>>>>>>> Stashed changes
     if (suggestions.length) {
       html += `<div class="card"><h2>💡 Suggestions to improve</h2><ul style="padding-left:20px;">`;
       suggestions.forEach(s => {
@@ -1312,7 +2691,10 @@
       });
       html += `</ul></div>`;
     } else {
+<<<<<<< Updated upstream
       // Generate fallback suggestions
+=======
+>>>>>>> Stashed changes
       const missing = getMissingKeywords(resume, jd);
       if (missing.length) {
         html += `<div class="card"><h2>💡 Keywords to add</h2>`;
@@ -1324,6 +2706,7 @@
       }
     }
 
+<<<<<<< Updated upstream
     html += `<div class="card" style="border-color:var(--gold);background:var(--gold-soft);">
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
         <span style="font-size:28px;">🎯</span>
@@ -1336,6 +2719,35 @@
         </button>
       </div>
     </div>`;
+=======
+    if (isAuthenticated()) {
+      html += `<div class="card" style="border-color:var(--gold);background:var(--gold-light);">
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+          <span style="font-size:32px;">🎯</span>
+          <div>
+            <strong>Want to improve your score?</strong><br>
+            <span style="font-size:13px;color:var(--muted);">Use the "Build my resume" tab with AI enhancement, or add missing keywords above.</span>
+          </div>
+          <button class="gold-btn" onclick="document.querySelector('[data-tab=\\'build\\']').click();" style="margin-left:auto;">
+            ✨ Build now
+          </button>
+        </div>
+      </div>`;
+    } else {
+      html += `<div class="card" style="border-color:var(--gold);background:var(--gold-light);">
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+          <span style="font-size:32px;">🔐</span>
+          <div>
+            <strong>Want to improve your score?</strong><br>
+            <span style="font-size:13px;color:var(--muted);">Sign in to build your resume with AI enhancement and save it.</span>
+          </div>
+          <button class="accent-btn" onclick="document.getElementById('loginBtn').click();" style="margin-left:auto;">
+            🔐 Log in
+          </button>
+        </div>
+      </div>`;
+    }
+>>>>>>> Stashed changes
 
     el.innerHTML = html;
     if (statusEl) statusEl.textContent = "✅ Analysis complete!";
@@ -1347,21 +2759,37 @@
       <div class="card">
         <div class="gauge-row">
           <div class="gauge-wrap">
+<<<<<<< Updated upstream
             <svg width="110" height="110" viewBox="0 0 110 110">
               <circle class="gauge-track" cx="55" cy="55" r="42"/>
               <circle class="gauge-fill" cx="55" cy="55" r="42" 
                       stroke="${color}" 
                       stroke-dasharray="${2 * Math.PI * 42}" 
                       stroke-dashoffset="${2 * Math.PI * 42 * (1 - score/100)}"/>
+=======
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle class="gauge-track" cx="60" cy="60" r="46"/>
+              <circle class="gauge-fill" cx="60" cy="60" r="46" 
+                      stroke="${color}" 
+                      stroke-dasharray="${2 * Math.PI * 46}" 
+                      stroke-dashoffset="${2 * Math.PI * 46 * (1 - score/100)}"/>
+>>>>>>> Stashed changes
             </svg>
             <div class="gauge-number">${score}<small>%</small></div>
           </div>
           <div class="gauge-label-block">
             <h2>Keyword Match (Local)</h2>
+<<<<<<< Updated upstream
             <div class="verdict" style="color:${color};">
               ${score >= 70 ? '✅ Good match!' : score >= 40 ? '⚠️ Needs work' : '❌ Poor match'}
             </div>
             <div style="font-size:11px;color:var(--muted);margin-top:4px;">⚡ Server unavailable — using local scoring</div>
+=======
+            <div class="verdict" style="color:${color};background:${score >= 70 ? 'var(--accent-light)' : score >= 40 ? 'var(--gold-light)' : 'var(--warn-soft)'}">
+              ${score >= 70 ? '✅ Good match!' : score >= 40 ? '⚠️ Needs work' : '❌ Poor match'}
+            </div>
+            <div style="font-size:11px;color:var(--muted);margin-top:6px;">⚡ Server unavailable — using local scoring</div>
+>>>>>>> Stashed changes
           </div>
         </div>
       </div>
@@ -1383,6 +2811,15 @@
     const resultsEl = document.getElementById("aiEnhanceResults");
     const jdField = document.getElementById("buildJobDescription").value.trim();
 
+<<<<<<< Updated upstream
+=======
+    if (!isAuthenticated()) {
+      alert("🔐 Please log in first to use AI enhancement.");
+      document.getElementById("loginBtn").click();
+      return;
+    }
+
+>>>>>>> Stashed changes
     const jobDescription = jdField || "No specific JD — polish the wording to be more professional and impactful.";
 
     const resumeText = resumeTextOverride || assembleResumeTextForAI();
@@ -1444,8 +2881,19 @@
     if (applied) updatePreview();
   }
 
-  document.getElementById("aiEnhanceBtn").addEventListener("click", () => runAiEnhance());
+  // ============================================================
+  // SAVE RESUME
+  // ============================================================
+  document.getElementById("saveResumeBtn").addEventListener("click", async () => {
+    const statusEl = document.getElementById("saveResumeStatus");
+    if (!requireSupabase("Saving")) return;
+    if (!isAuthenticated()) {
+      statusEl.textContent = "🔐 Please log in first to save your resume.";
+      document.getElementById("loginBtn").click();
+      return;
+    }
 
+<<<<<<< Updated upstream
   document.getElementById("experienceList").addEventListener("click", (e) => {
     if (!e.target.classList.contains("ai-improve-bullets")) return;
     const block = e.target.closest(".experience-entry");
@@ -1482,6 +2930,27 @@
   });
 
   // ============================================================
+=======
+    const data = collectResumeData();
+    const jobDescription = document.getElementById("buildJobDescription").value.trim();
+    const title = data.fullName ? `${data.fullName} — ${jobDescription.slice(0, 40) || "Resume"}` : "Untitled resume";
+
+    statusEl.textContent = "💾 Saving...";
+    const { error } = await supabaseClient.from("resumes").insert({
+      user_id: currentUser.id,
+      title,
+      template: selectedTemplate,
+      photo_url: uploadedPhotoUrl,
+      job_description: jobDescription,
+      resume_data: data
+    });
+
+    statusEl.textContent = error ? `❌ ${error.message}` : "✅ Saved!";
+    if (!error) loadMyResumes();
+  });
+
+  // ============================================================
+>>>>>>> Stashed changes
   // LOAD / LIST RESUMES
   // ============================================================
   async function loadMyResumes() {
@@ -1506,7 +2975,11 @@
         </div>
         <div class="actions">
           <button class="secondary-btn" onclick="loadResumeIntoBuilder('${r.id}')">📂 Load</button>
+<<<<<<< Updated upstream
           <button class="signout-btn" onclick="deleteResume('${r.id}')">🗑️ Delete</button>
+=======
+          <button class="danger-btn" onclick="deleteResume('${r.id}')">🗑️ Delete</button>
+>>>>>>> Stashed changes
         </div>
       </div>
     `).join("");
@@ -1514,6 +2987,15 @@
 
   window.loadResumeIntoBuilder = async function (id) {
     if (!requireSupabase("Loading")) return;
+<<<<<<< Updated upstream
+=======
+    if (!isAuthenticated()) {
+      alert("🔐 Please log in first to load your resume.");
+      document.getElementById("loginBtn").click();
+      return;
+    }
+    
+>>>>>>> Stashed changes
     const { data, error } = await supabaseClient.from("resumes").select("*").eq("id", id).single();
     if (error) { alert(error.message); return; }
 
@@ -1559,6 +3041,14 @@
 
   window.deleteResume = async function (id) {
     if (!requireSupabase("Deleting")) return;
+<<<<<<< Updated upstream
+=======
+    if (!isAuthenticated()) {
+      alert("🔐 Please log in first to delete your resume.");
+      document.getElementById("loginBtn").click();
+      return;
+    }
+>>>>>>> Stashed changes
     if (!confirm("Delete this resume permanently?")) return;
     const { error } = await supabaseClient.from("resumes").delete().eq("id", id);
     if (error) { alert(error.message); return; }
@@ -1566,6 +3056,30 @@
   };
 
   // ============================================================
+<<<<<<< Updated upstream
+=======
+  // PDF / DOCX DOWNLOAD
+  // ============================================================
+  document.getElementById("downloadResumePdfBtn").addEventListener("click", () => {
+    if (!isAuthenticated()) {
+      alert("🔐 Please log in first to download your resume as PDF.");
+      document.getElementById("loginBtn").click();
+      return;
+    }
+    alert("📄 PDF download will be available once you connect the backend. For now, use 'Save to my account' and export later.");
+  });
+
+  document.getElementById("downloadResumeDocxBtn").addEventListener("click", () => {
+    if (!isAuthenticated()) {
+      alert("🔐 Please log in first to download your resume as Word document.");
+      document.getElementById("loginBtn").click();
+      return;
+    }
+    alert("📝 Word download will be available once you connect the backend. For now, use 'Save to my account' and export later.");
+  });
+
+  // ============================================================
+>>>>>>> Stashed changes
   // AUTH
   // ============================================================
   const authPanel = document.getElementById("authPanel");
@@ -1602,6 +3116,17 @@
     authPanel.style.display = authPanel.style.display === "block" ? "none" : "block";
   });
 
+<<<<<<< Updated upstream
+=======
+  document.addEventListener("click", (e) => {
+    if (authPanel.style.display === "block") {
+      if (!authPanel.contains(e.target) && !e.target.closest(".auth-bar")) {
+        authPanel.style.display = "none";
+      }
+    }
+  });
+
+>>>>>>> Stashed changes
   document.getElementById("authForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     if (!requireSupabase("Login/Sign up")) return;
@@ -1676,6 +3201,11 @@
       }
       if (listEl) listEl.style.display = "none";
     }
+<<<<<<< Updated upstream
+=======
+    
+    updateAISection();
+>>>>>>> Stashed changes
   }
 
   if (supabaseClient) supabaseClient.auth.onAuthStateChange(() => refreshAuthUi());
@@ -1690,11 +3220,19 @@
       document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
       btn.classList.add("active");
       document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
+<<<<<<< Updated upstream
       if (btn.dataset.tab === "build") updatePreview();
+=======
+      if (btn.dataset.tab === "build") {
+        updatePreview();
+        updateAISection();
+      }
+>>>>>>> Stashed changes
     });
   });
 
   // ============================================================
+<<<<<<< Updated upstream
   // PDF / DOCX DOWNLOAD (Placeholder)
   // ============================================================
   document.getElementById("downloadResumePdfBtn").addEventListener("click", () => {
@@ -1706,13 +3244,24 @@
   });
 
   // ============================================================
+=======
+>>>>>>> Stashed changes
   // INIT
   // ============================================================
   attachBuilderListeners();
   updatePreview();
+<<<<<<< Updated upstream
 
   console.log("✨ WarliResume loaded! 🎯");
   console.log("📌 Replace SUPABASE_URL and SUPABASE_ANON_KEY to enable all features.");
+=======
+  updateAISection();
+
+  console.log("✨ WarliResume loaded! 🎯");
+  console.log("📌 Replace SUPABASE_URL and SUPABASE_ANON_KEY to enable all features.");
+  console.log("🔐 Login required for: AI Enhancement, Downloads, Saving, Loading");
+  console.log("📸 Screenshots and right-click are disabled to protect your data.");
+>>>>>>> Stashed changes
 </script>
 </body>
 </html>

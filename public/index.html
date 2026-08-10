@@ -798,8 +798,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   // ============ CONFIG ============
-  const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
-  const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+  const SUPABASE_URL = "https://tdosfwkxlvzrojzfqbog.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkb3Nmd2t4bHZ6cm9qemZxYm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwNzU2MjQsImV4cCI6MjEwMTY1MTYyNH0.z-bPuca4eKsvYRF60QAywJye64NkM-c59pS5QUR0Izg";
   const supabaseClient = (() => {
     try {
       if (SUPABASE_URL === "YOUR_SUPABASE_PROJECT_URL" || !SUPABASE_URL || !SUPABASE_ANON_KEY) { console.warn("Supabase not configured"); return null; }

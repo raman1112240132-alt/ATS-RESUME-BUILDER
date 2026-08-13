@@ -752,11 +752,9 @@
       <div style="padding:20px 24px; border-top:1px solid var(--paper); display:flex; flex-direction:column; gap:12px;">
         <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center;">
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button id="clearAllBtn" class="danger-btn" style="min-width:120px;font-size:12px;">🗑️ Clear all</button>
-            <button id="exportJsonBtn" class="secondary-btn" style="min-width:120px;font-size:12px;">📥 Export JSON</button>
-            <button id="importJsonBtn" class="secondary-btn" style="min-width:120px;font-size:12px;">📤 Import JSON</button>
-            <input type="file" id="importJsonInput" accept=".json" style="display:none;" />
-          </div>
+  <button id="clearAllBtn" class="danger-btn" style="min-width:120px;font-size:12px;">🗑️ Clear all</button>
+  <!-- JSON buttons removed -->
+</div>
           <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end;">
             <button id="loadSampleBtn" class="outline-btn" style="min-width:140px;">✨ Load sample data</button>
             <button id="saveResumeBtn" class="gold-btn" style="min-width:160px;">💾 Save to my account</button>
@@ -1504,12 +1502,43 @@ Requirements:
   }
 
   // ============ SAVE / LOAD SAMPLE / CLEAR / EXPORT / IMPORT ============
-  document.getElementById("saveResumeBtn").addEventListener("click", () => {
-    const statusEl = document.getElementById("saveResumeStatus");
-    if (!isAuthenticated()) { toast('Log in first to save to the cloud', 'warn'); document.getElementById("loginBtn").click(); return; }
-    statusEl.textContent = "💾 Saving...";
-    setTimeout(() => { statusEl.textContent = "✅ Saved to account (demo mode)"; toast('Saved to account', 'success'); }, 700);
+document.getElementById("saveResumeBtn").addEventListener("click", async () => {
+  const statusEl = document.getElementById("saveResumeStatus");
+  if (!supabaseClient) { 
+    statusEl.textContent = "⚠️ Supabase is not connected."; 
+    return; 
+  }
+  if (!isAuthenticated()) { 
+    toast('Please log in first to save', 'warn'); 
+    document.getElementById("loginBtn").click(); 
+    return; 
+  }
+
+  const data = collectResumeData();
+  const jobDescription = document.getElementById("buildJobDescription").value.trim();
+  const title = data.fullName ? `${data.fullName} — ${jobDescription.slice(0, 40) || "Resume"}` : "Untitled resume";
+
+  statusEl.textContent = "💾 Saving...";
+
+  // Attempt to insert the data into Supabase
+  const { error } = await supabaseClient.from("resumes").insert({
+    user_id: currentUser.id,
+    title: title,
+    template: selectedTemplate,
+    photo_url: uploadedPhotoUrl,
+    job_description: jobDescription,
+    resume_data: data
   });
+
+  if (error) {
+    statusEl.textContent = `❌ ${error.message}`;
+    toast(`Save failed: ${error.message}`, 'error');
+  } else {
+    statusEl.textContent = "✅ Saved to your account!";
+    toast('Resume saved successfully!', 'success');
+    loadMyResumes(); // Refresh the "My Resumes" tab
+  }
+});
 
   document.getElementById("loadSampleBtn").addEventListener("click", () => {
     document.getElementById("fullName").value = "Alex Morgan";
@@ -1671,7 +1700,41 @@ Requirements:
   });
 
   // ============ MY RESUMES ============
-  async function loadMyResumes() { document.getElementById("myResumesList").innerHTML = `<div class="placeholder">📁 Connect Supabase to sync saved resumes.</div>`; }
+async function loadMyResumes() {
+  const listEl = document.getElementById("myResumesList");
+  if (!supabaseClient || !isAuthenticated()) { 
+    listEl.innerHTML = ''; 
+    return; 
+  }
+
+  const { data, error } = await supabaseClient
+    .from("resumes")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    listEl.innerHTML = `<p style="color:var(--warn);">${error.message}</p>`;
+    return;
+  }
+  
+  if (!data.length) {
+    listEl.innerHTML = `<div class="placeholder">📁 No saved resumes yet — build one and hit "Save to my account".</div>`;
+    return;
+  }
+
+  listEl.innerHTML = data.map(r => `
+    <div class="resume-row">
+      <div>
+        <div><strong>${escapeHtml(r.title)}</strong></div>
+        <div class="meta">${r.template} · saved ${new Date(r.created_at).toLocaleDateString()}</div>
+      </div>
+      <div class="actions">
+        <button class="secondary-btn" onclick="loadResumeIntoBuilder('${r.id}')">📂 Load</button>
+        <button class="danger-btn" onclick="deleteResume('${r.id}')">🗑️ Delete</button>
+      </div>
+    </div>
+  `).join("");
+}
 
   // ============ AUTH ============
   function setAuthMode(mode) {
@@ -1690,19 +1753,75 @@ Requirements:
     refreshAuthUi();
     toast(authMode === 'login' ? 'Logged in (demo)' : 'Signed up (demo)', 'success');
   });
-  document.getElementById("signOutBtn").addEventListener("click", () => {
+ document.getElementById("signOutBtn").addEventListener("click", async () => {
+  if (!supabaseClient) return; // Safety check
+
+  // 1. Tell Supabase to actually log the user out on the server
+  await supabaseClient.auth.signOut();
+  
+  // 2. Clear the logged-in state on our frontend
+  currentUser = null;
+
+  // 3. Update the UI back to the "Logged Out" view
+  document.getElementById("loginBtn").style.display = "inline-block";
+  document.getElementById("signupBtn").style.display = "inline-block";
+  document.getElementById("userChip").style.display = "none";
+  document.getElementById("signOutBtn").style.display = "none";
+  document.getElementById("myResumesSignedOut").style.display = "block";
+  document.getElementById("myResumesList").style.display = "none";
+  
+  updateAISection();
+  toast('Signed out', 'info');
+});
+  async function refreshAuthUi() {
+  // If Supabase isn't connected, stop here
+  if (!supabaseClient) {
     currentUser = null;
+    return;
+  }
+
+  // Ask Supabase who the real user is
+  const { data } = await supabaseClient.auth.getUser();
+  currentUser = data?.user || null;
+
+  if (currentUser) {
+    // 1. User IS logged in
+    document.getElementById("loginBtn").style.display = "none";
+    document.getElementById("signupBtn").style.display = "none";
+    
+    document.getElementById("userChip").style.display = "inline";
+    document.getElementById("userChip").textContent = `👤 ${currentUser.email}`;
+    
+    document.getElementById("signOutBtn").style.display = "inline-block";
+    document.getElementById("myResumesSignedOut").style.display = "none";
+    document.getElementById("myResumesList").style.display = "block";
+    
+    loadMyResumes(); // Load their saved resumes
+  } else {
+    // 2. User IS NOT logged in
     document.getElementById("loginBtn").style.display = "inline-block";
     document.getElementById("signupBtn").style.display = "inline-block";
+    
     document.getElementById("userChip").style.display = "none";
     document.getElementById("signOutBtn").style.display = "none";
+    
     document.getElementById("myResumesSignedOut").style.display = "block";
     document.getElementById("myResumesList").style.display = "none";
-    updateAISection();
-    toast('Signed out', 'info');
-  });
-  function refreshAuthUi() {
-    currentUser = { id: "demo_user", email: "demo@vishishtresume.com" };
+  }
+  updateAISection();
+}
+
+// Tell Supabase to trigger this function whenever Auth changes (Login/Signup/Logout)
+if (supabaseClient) {
+  supabaseClient.auth.onAuthStateChange(() => refreshAuthUi());
+}
+
+  // Check the real user state with Supabase
+  const { data } = await supabaseClient.auth.getUser();
+  currentUser = data?.user || null;
+
+  if (currentUser) {
+    // User is logged in
     document.getElementById("loginBtn").style.display = "none";
     document.getElementById("signupBtn").style.display = "none";
     document.getElementById("userChip").style.display = "inline";
@@ -1710,9 +1829,23 @@ Requirements:
     document.getElementById("signOutBtn").style.display = "inline-block";
     document.getElementById("myResumesSignedOut").style.display = "none";
     document.getElementById("myResumesList").style.display = "block";
-    updateAISection();
     loadMyResumes();
+  } else {
+    // User is logged out
+    document.getElementById("loginBtn").style.display = "inline-block";
+    document.getElementById("signupBtn").style.display = "inline-block";
+    document.getElementById("userChip").style.display = "none";
+    document.getElementById("signOutBtn").style.display = "none";
+    document.getElementById("myResumesSignedOut").style.display = "block";
+    document.getElementById("myResumesList").style.display = "none";
   }
+  updateAISection();
+}
+
+// IMPORTANT: Trigger Supabase to watch for auth changes
+if (supabaseClient) {
+  supabaseClient.auth.onAuthStateChange(() => refreshAuthUi());
+}
   refreshAuthUi();
 
   // ============ TABS ============

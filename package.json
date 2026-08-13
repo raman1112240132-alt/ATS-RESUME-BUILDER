@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {
   "name": "warli-resume",
   "version": "2.0.0",
@@ -99,3 +100,5 @@
     "poweredBy": "Supabase, Claude AI, Vercel"
   }
 }
+=======
+>>>>>>> Stashed changes

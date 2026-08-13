@@ -1,8 +1,7 @@
-<<<<<<< Updated upstream
 {
-  "name": "warli-resume",
+  "name": "vishisht-resume",
   "version": "2.0.0",
-  "description": "AI-Powered ATS Resume Builder - Know if your resume actually gets shortlisted",
+  "description": "VishishtResume - AI-Powered ATS Resume Builder. Know if your resume actually gets shortlisted.",
   "main": "index.html",
   "type": "module",
   "scripts": {
@@ -25,9 +24,9 @@
     "rollback": "vercel rollback"
   },
   "keywords": [
+    "vishishtresume",
     "resume",
     "ats",
-    "warli",
     "builder",
     "job-search",
     "career",
@@ -55,7 +54,7 @@
   "bugs": {
     "url": "https://github.com/raman1112240132-alt/ATS-RESUME-BUILDER/issues"
   },
-  "homepage": "https://ats-resume-builder.vercel.app",
+  "homepage": "https://vishishtresume.vercel.app",
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0"
@@ -100,5 +99,3 @@
     "poweredBy": "Supabase, Claude AI, Vercel"
   }
 }
-=======
->>>>>>> Stashed changes

@@ -7,5 +7,6 @@
     "@supabase/supabase-js": "latest",
     "docx": "latest",
     "pdfkit": "latest"
-  }
+  },
+  "scripts": {}
 }

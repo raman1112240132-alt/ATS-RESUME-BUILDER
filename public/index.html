@@ -150,6 +150,64 @@
   .toast .toast-close { background: none; border: none; color: var(--muted); cursor: pointer; padding: 0 0 0 8px; margin-left: auto; font-size: 16px; box-shadow: none; }
   .toast .toast-close:hover { color: var(--ink); transform: none; box-shadow: none; }
 
+  /* ONE PAGE WARNING */
+  .page-warning { background: var(--warn-soft); border: 1px solid var(--warn); border-radius: var(--radius); padding: 12px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--warn); font-weight: 600; animation: fadeIn 0.3s ease; }
+  .page-warning.hidden { display: none; }
+
+  /* NARROW A4 PREVIEW */
+  .preview-wrapper { position: relative; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm); overflow: hidden; }
+  .preview-header { background: var(--paper); padding: 12px 20px; border-bottom: 1px solid var(--border); font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 10px; color: var(--ink); border-radius: var(--radius) var(--radius) 0 0; justify-content: space-between; flex-wrap: wrap; }
+  #resumePreview { padding: 40px; font-size: 13px; min-height: 350px; max-height: 800px; overflow: auto; font-family: 'Inter', sans-serif; color: #1a1a1a; background: white; position: relative; transform-origin: top left; transition: transform 0.2s ease; width: 100%; }
+  #resumePreview .preview-page { max-width: 780px; margin: 0 auto; }
+  
+  #resumePreview h1 { font-family:'Poppins',sans-serif;font-size:22px;text-align:center;margin-bottom:2px;font-weight:700;color:#1a1a1a; }
+  #resumePreview .contact-line { text-align:center;font-size:11px;color:var(--muted);margin-bottom:18px;font-family:'IBM Plex Mono',monospace; }
+  #resumePreview h2 { font-size:12px;text-transform:uppercase;letter-spacing:0.08em;border-bottom:2px solid var(--border);padding-bottom:6px;margin-top:18px;color:var(--structure);font-weight:700;clear:both; }
+  #resumePreview .job-title { font-weight:600;margin-top:10px;font-size:14px; }
+  #resumePreview .job-dates { color:var(--muted);font-size:11px;font-family:'IBM Plex Mono',monospace; }
+  #resumePreview ul { margin: 6px 0; padding-left: 20px; list-style-type: disc; }
+  #resumePreview ul li { margin-bottom: 2px; line-height: 1.5; }
+  #resumePreview p { margin: 6px 0; line-height: 1.6; }
+  #resumePreview .warli-watermark { text-align:center;opacity:0.05;font-size:10px;letter-spacing:3px;margin-top:24px;font-family:'IBM Plex Mono',monospace;clear:both; }
+  #resumePreview .preview-photo { width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;border:3px solid var(--gold);box-shadow:var(--shadow-sm); }
+  
+  /* Two column skill rows */
+  #resumePreview .skills-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  #resumePreview .skills-row .col p { margin: 2px 0; }
+
+  #resumePreview.template-professional h2 { color: var(--structure); border-bottom-color: var(--structure); }
+  #resumePreview.template-simple h2 { color:#333;border-bottom-color:#ccc; }
+  #resumePreview.template-simple h1 { color: #111; }
+  #resumePreview.template-creative { border-top: 5px solid var(--structure); }
+  #resumePreview.template-executive h1 { font-family:'Playfair Display',serif;font-size:28px;text-align:left;letter-spacing:0.5px;border-bottom:3px solid var(--ink);padding-bottom:8px;margin-bottom:8px; }
+  #resumePreview.template-executive .contact-line { text-align: left; font-size: 12px; }
+  #resumePreview.template-executive h2 { font-family:'Playfair Display',serif;text-transform:uppercase;font-size:13px;letter-spacing:0.12em;color:var(--ink);border-bottom:2px solid var(--ink); }
+  #resumePreview.template-modern h1 { text-align: left; font-size: 24px; }
+  #resumePreview.template-modern .contact-line { text-align: left; }
+  #resumePreview.template-modern h2 { border-bottom:none;border-left:4px solid var(--accent);padding:2px 0 2px 10px;background:var(--accent-light);color:var(--accent-dark); }
+  #resumePreview.template-compact { font-size: 12px; }
+  #resumePreview.template-compact h1 { font-size: 19px; margin-bottom: 0; }
+  #resumePreview.template-compact .contact-line { margin-bottom: 10px; }
+  #resumePreview.template-compact h2 { margin-top: 12px; padding-bottom: 3px; font-size: 11px; }
+  #resumePreview.template-compact .job-title { font-size: 13px; margin-top: 6px; }
+  #resumePreview.template-compact ul li { margin-bottom: 1px; line-height: 1.35; }
+  #resumePreview.template-compact p { margin: 4px 0; }
+  #resumePreview.template-academic { font-family:'Merriweather',Georgia,serif;font-size:12.5px; }
+  #resumePreview.template-academic h1 { font-family:'Merriweather',serif;font-size:22px;font-weight:700; }
+  #resumePreview.template-academic .contact-line { font-family: 'Merriweather', serif; font-style: italic; }
+  #resumePreview.template-academic h2 { font-family:'Merriweather',serif;font-size:12px;color:var(--structure);border-bottom:1px solid var(--structure);text-transform:none;letter-spacing:0; }
+  #resumePreview.template-academic .job-title { font-style: italic; }
+  #resumePreview.template-minimalist h1 { font-weight: 500; font-size: 20px; letter-spacing: 1px; }
+  #resumePreview.template-minimalist h2 { border-bottom:none;color:var(--muted);font-size:10.5px;letter-spacing:0.2em;margin-top:22px;font-weight:600; }
+  #resumePreview.template-minimalist .job-title { font-weight: 500; }
+  #resumePreview.template-classic { font-family: Georgia, serif; }
+  #resumePreview.template-classic h1 { font-family:Georgia,serif;font-size:24px;letter-spacing:0.5px; }
+  #resumePreview.template-classic h2 { font-family:Georgia,serif;text-transform:uppercase;font-size:12.5px;color:#1a1a1a;border-bottom:1px solid #1a1a1a;letter-spacing:0.15em; }
+  #resumePreview.template-technical h1 { font-family:'IBM Plex Mono',monospace;font-size:20px;text-align:left; }
+  #resumePreview.template-technical .contact-line { text-align: left; font-size: 11px; }
+  #resumePreview.template-technical h2 { font-family:'IBM Plex Mono',monospace;color:var(--accent);border-bottom:1px dashed var(--accent);font-size:11.5px; }
+  #resumePreview.template-technical .job-title { font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+
   /* AI EDITOR UI */
   .ai-editor-container { display: flex; flex-direction: column; gap: 20px; margin-top: 10px; }
   .ai-editor-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
@@ -161,6 +219,7 @@
   .ai-box-body { padding: 14px; max-height: 500px; overflow-y: auto; font-size: 13.5px; line-height: 1.7; }
   .ai-box-body p { margin-bottom: 8px; }
   .ai-copy-btn { background: var(--accent); color: white; padding: 6px 16px; font-size: 12px; border-radius: 6px; border: none; cursor: pointer; }
+  .ai-input-actions { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
   .missing-keywords-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .missing-keywords-list li { background: var(--warn-soft); color: var(--warn); padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; }
 
@@ -195,50 +254,6 @@
   .preview-header .zoom-value { font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);min-width:36px;text-align:center; }
   .preview-header .fullscreen-btn { background:transparent;color:var(--muted);border:1px solid var(--border);padding:4px 10px;font-size:12px;border-radius:6px;margin:0; }
   .preview-header .fullscreen-btn:hover { color: var(--structure); border-color: var(--structure); transform: none; box-shadow: none; background: var(--surface); }
-  #resumePreview { padding: 32px; font-size: 13px; min-height: 350px; max-height: 500px; overflow: auto; font-family: 'Inter', sans-serif; color: #1a1a1a; background: white; position: relative; transform-origin: top left; transition: transform 0.2s ease; }
-  #resumePreview h1 { font-family:'Poppins',sans-serif;font-size:22px;text-align:center;margin-bottom:2px;font-weight:700;color:#1a1a1a; }
-  #resumePreview .contact-line { text-align:center;font-size:11px;color:var(--muted);margin-bottom:18px;font-family:'IBM Plex Mono',monospace; }
-  #resumePreview h2 { font-size:12px;text-transform:uppercase;letter-spacing:0.08em;border-bottom:2px solid var(--border);padding-bottom:6px;margin-top:18px;color:var(--structure);font-weight:700;clear:both; }
-  #resumePreview .job-title { font-weight:600;margin-top:10px;font-size:14px; }
-  #resumePreview .job-dates { color:var(--muted);font-size:11px;font-family:'IBM Plex Mono',monospace; }
-  #resumePreview ul { margin: 6px 0; padding-left: 20px; list-style-type: disc; }
-  #resumePreview ul li { margin-bottom: 2px; line-height: 1.5; }
-  #resumePreview p { margin: 6px 0; line-height: 1.6; }
-  #resumePreview .warli-watermark { text-align:center;opacity:0.05;font-size:10px;letter-spacing:3px;margin-top:24px;font-family:'IBM Plex Mono',monospace;clear:both; }
-  #resumePreview .preview-photo { width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;border:3px solid var(--gold);box-shadow:var(--shadow-sm); }
-
-  #resumePreview.template-professional h2 { color: var(--structure); border-bottom-color: var(--structure); }
-  #resumePreview.template-simple h2 { color:#333;border-bottom-color:#ccc; }
-  #resumePreview.template-simple h1 { color: #111; }
-  #resumePreview.template-creative { border-top: 5px solid var(--structure); }
-  #resumePreview.template-executive h1 { font-family:'Playfair Display',serif;font-size:28px;text-align:left;letter-spacing:0.5px;border-bottom:3px solid var(--ink);padding-bottom:8px;margin-bottom:8px; }
-  #resumePreview.template-executive .contact-line { text-align: left; font-size: 12px; }
-  #resumePreview.template-executive h2 { font-family:'Playfair Display',serif;text-transform:uppercase;font-size:13px;letter-spacing:0.12em;color:var(--ink);border-bottom:2px solid var(--ink); }
-  #resumePreview.template-modern h1 { text-align: left; font-size: 24px; }
-  #resumePreview.template-modern .contact-line { text-align: left; }
-  #resumePreview.template-modern h2 { border-bottom:none;border-left:4px solid var(--accent);padding:2px 0 2px 10px;background:var(--accent-light);color:var(--accent-dark); }
-  #resumePreview.template-compact { font-size: 12px; }
-  #resumePreview.template-compact h1 { font-size: 19px; margin-bottom: 0; }
-  #resumePreview.template-compact .contact-line { margin-bottom: 10px; }
-  #resumePreview.template-compact h2 { margin-top: 12px; padding-bottom: 3px; font-size: 11px; }
-  #resumePreview.template-compact .job-title { font-size: 13px; margin-top: 6px; }
-  #resumePreview.template-compact ul li { margin-bottom: 1px; line-height: 1.35; }
-  #resumePreview.template-compact p { margin: 4px 0; }
-  #resumePreview.template-academic { font-family:'Merriweather',Georgia,serif;font-size:12.5px; }
-  #resumePreview.template-academic h1 { font-family:'Merriweather',serif;font-size:22px;font-weight:700; }
-  #resumePreview.template-academic .contact-line { font-family: 'Merriweather', serif; font-style: italic; }
-  #resumePreview.template-academic h2 { font-family:'Merriweather',serif;font-size:12px;color:var(--structure);border-bottom:1px solid var(--structure);text-transform:none;letter-spacing:0; }
-  #resumePreview.template-academic .job-title { font-style: italic; }
-  #resumePreview.template-minimalist h1 { font-weight: 500; font-size: 20px; letter-spacing: 1px; }
-  #resumePreview.template-minimalist h2 { border-bottom:none;color:var(--muted);font-size:10.5px;letter-spacing:0.2em;margin-top:22px;font-weight:600; }
-  #resumePreview.template-minimalist .job-title { font-weight: 500; }
-  #resumePreview.template-classic { font-family: Georgia, serif; }
-  #resumePreview.template-classic h1 { font-family:Georgia,serif;font-size:24px;letter-spacing:0.5px; }
-  #resumePreview.template-classic h2 { font-family:Georgia,serif;text-transform:uppercase;font-size:12.5px;color:#1a1a1a;border-bottom:1px solid #1a1a1a;letter-spacing:0.15em; }
-  #resumePreview.template-technical h1 { font-family:'IBM Plex Mono',monospace;font-size:20px;text-align:left; }
-  #resumePreview.template-technical .contact-line { text-align: left; font-size: 11px; }
-  #resumePreview.template-technical h2 { font-family:'IBM Plex Mono',monospace;color:var(--accent);border-bottom:1px dashed var(--accent);font-size:11.5px; }
-  #resumePreview.template-technical .job-title { font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
 
   .preview-modal { position: fixed; inset: 0; background: rgba(43,36,17,0.85); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.2s ease; }
   .preview-modal.show { display: flex; }
@@ -298,49 +313,8 @@
   .word-count.warn { color: var(--warn); }
   .word-count.good { color: var(--accent); }
 
-  .login-prompt { display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 20px;background:var(--gold-light);border:2px solid var(--gold);border-radius:var(--radius);text-align:center;gap:12px; }
-  .login-prompt .icon { font-size: 40px; }
-  .login-prompt h3 { font-family: 'Poppins', sans-serif; font-size: 17px; }
-  .login-prompt p { color: var(--muted); max-width: 400px; font-size: 14px; }
-  .login-prompt .login-btn { background: var(--accent); color: white; padding: 8px 20px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
-
-  #tab-score .grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: start; }
-  @media (min-width: 840px) { #tab-score .grid { grid-template-columns: 1fr 1fr; } }
-  .field-toolbar { display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:6px;clear:both; }
-  .field-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-  .icon-btn { background:var(--surface);color:var(--ink);border:1.5px solid var(--border);padding:6px 14px;font-size:11.5px;font-weight:500;border-radius:6px;cursor:pointer;transition:var(--transition);margin-top:0; }
-  .icon-btn:hover:not(:disabled) { border-color: var(--muted); background: var(--paper); transform: translateY(-1px); }
-  .upload-status { font-size: 12px; color: var(--muted); margin: -8px 0 10px; clear: both; }
-  .upload-status.error { color: var(--warn); }
-  .char-count { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: var(--muted); text-align: right; margin: -10px 0 8px; }
-
-  .try-example-strip { background: linear-gradient(120deg, var(--structure-light), var(--gold-light)); border: 1px solid var(--gold); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  .try-example-strip .icon { font-size: 24px; }
-  .try-example-strip .text { flex: 1; font-size: 13px; color: var(--ink); }
-  .try-example-strip .text strong { color: var(--structure); }
-  .try-example-strip button { background: var(--structure); color: white; padding: 8px 18px; font-size: 12.5px; border-radius: 8px; border: none; cursor: pointer; }
-  .try-example-strip button:hover { background: #a03e21; }
-
-  .gauge-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
-  .gauge-wrap { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
-  .gauge-wrap svg { transform: rotate(-90deg); }
-  .gauge-track { fill: none; stroke: var(--paper); stroke-width: 8; }
-  .gauge-fill { fill: none; stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
-  .gauge-number { position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:700; }
-  .gauge-number small { font-size: 13px; font-weight: 400; color: var(--muted); }
-  .gauge-label-block h2 { margin-bottom: 4px; font-size: 17px; }
-  .gauge-label-block .verdict { font-size:14px;font-weight:600;font-family:'IBM Plex Mono',monospace;padding:4px 12px;border-radius:999px;display:inline-block; }
-  .tag { display:inline-flex;align-items:center;background:var(--warn-soft);color:var(--warn);border-radius:999px;padding:4px 14px;font-size:12px;font-family:'IBM Plex Mono',monospace;font-weight:500;margin:3px 4px 3px 0;transition:var(--transition);cursor:pointer; }
-  .tag:hover { transform: translateY(-1px); background: var(--warn); color: white; }
-  .tag.matched { background: var(--accent-light); color: var(--accent); }
-  .tag.gold { background: var(--gold-light); color: var(--gold-dark); }
-  .card { border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:16px;background:var(--surface);box-shadow:var(--shadow-sm);transition:var(--transition);overflow:hidden; }
-  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-  .card h2 { font-family:'Poppins',sans-serif;font-size:16px;margin:0 0 14px;font-weight:600;color:var(--structure); }
-  .placeholder { color:var(--muted);font-size:14px;border:2px dashed var(--border);border-radius:var(--radius);padding:48px 24px;text-align:center;background:var(--surface);transition:var(--transition); }
-
-  .skeleton { background: linear-gradient(90deg, var(--paper) 0%, #eee 50%, var(--paper) 100%); background-size: 2000px 100%; animation: shimmer 1.4s infinite linear; border-radius: 6px; }
-  .skeleton-line { height: 12px; margin: 8px 0; }
+  .section-next-btn { background: var(--structure); color: white; padding: 8px 18px; font-size: 12px; border-radius: 8px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .section-next-btn:hover { background: #a03e21; }
 
   .signed-out-note { text-align:center;padding:60px 20px;color:var(--muted);border:2px dashed var(--border);border-radius:var(--radius);background:var(--surface); }
   .signed-out-note button { margin-top: 16px; }
@@ -382,7 +356,7 @@
     .form-tabs { flex-wrap: nowrap; overflow-x: auto; padding: 10px 16px 0; gap: 0; }
     .form-tab-btn { font-size: 12px; padding: 8px 12px; white-space: nowrap; }
     .template-grid { grid-template-columns: 1fr 1fr; }
-    #resumePreview { max-height: 300px; }
+    #resumePreview { max-height: 300px; padding: 20px; }
     #toastContainer { top: 12px; right: 12px; left: 12px; }
     .toast { min-width: 0; max-width: none; }
     .fab-help { width: 42px; height: 42px; bottom: 16px; right: 16px; }
@@ -582,10 +556,13 @@
             <button class="fullscreen-btn" id="fullscreenBtn" title="Open fullscreen preview">⛶ Fullscreen</button>
           </div>
         </div>
+        <div id="pageWarning" class="page-warning hidden">⚠️ Your resume is longer than one page. Try trimming older experience or shortening bullets to keep it to a single page.</div>
         <div id="resumePreview" class="template-professional">
-          <div class="placeholder" style="border:none;padding:24px;background:transparent;">
-            <div style="font-size:36px;margin-bottom:10px;">📄</div>
-            Start adding your details and selecting a template. The preview will update live.
+          <div class="preview-page">
+            <div class="placeholder" style="border:none;padding:24px;background:transparent;">
+              <div style="font-size:36px;margin-bottom:10px;">📄</div>
+              Start adding your details and selecting a template. The preview will update live.
+            </div>
           </div>
         </div>
       </div>
@@ -674,7 +651,7 @@
           </div>
         </div>
         <div style="text-align:right;margin-top:10px;">
-          <button class="secondary-btn" id="nextToSummaryBtn" style="font-size:12px;padding:8px 16px;">Next: Summary →</button>
+          <button class="section-next-btn" data-next="summary">Next: Summary →</button>
         </div>
       </div>
 
@@ -689,30 +666,52 @@
            <textarea id="buildJobDescription" style="height:100px;" placeholder="Paste the job description you are applying for. Our AI will use it to suggest wording improvements in the experience tab."></textarea>
         </div>
         <div id="aiEnhanceSection"></div>
+        <div style="text-align:right;margin-top:10px;">
+          <button class="section-next-btn" data-next="experience">Next: Experience →</button>
+        </div>
       </div>
 
       <div class="form-panel" id="form-experience">
         <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">💡 Tip: drag entries by the ⋮⋮ handle to reorder them.</div>
         <div id="experienceList"></div>
         <button type="button" class="secondary-btn" id="addExperience">+ Add experience</button>
+        <div style="text-align:right;margin-top:10px;">
+          <button class="section-next-btn" data-next="education">Next: Education →</button>
+        </div>
       </div>
 
       <div class="form-panel" id="form-education">
         <div style="font-size:12px;color:var(--muted);margin-bottom:12px;">💡 Tip: drag entries by the ⋮⋮ handle to reorder them.</div>
         <div id="educationList"></div>
         <button type="button" class="secondary-btn" id="addEducation">+ Add education</button>
+        <div style="text-align:right;margin-top:10px;">
+          <button class="section-next-btn" data-next="skills">Next: Skills →</button>
+        </div>
       </div>
 
       <div class="form-panel" id="form-skills">
+        <div class="grid-2col">
+          <div class="form-group">
+            <label for="coreSkills">🎯 Core Skills (comma-separated)</label>
+            <textarea id="coreSkills" style="height:80px;" placeholder="Team Leadership, Stakeholder Management, Project Planning, Problem Solving"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="technicalSkills">💻 Technical Skills (comma-separated)</label>
+            <textarea id="technicalSkills" style="height:80px;" placeholder="React, TypeScript, Node.js, Python, PostgreSQL, AWS"></textarea>
+          </div>
+        </div>
         <div class="form-group">
-          <label for="skills">🛠️ Skills (comma-separated)</label>
-          <textarea id="skills" style="height:80px;" placeholder="React, TypeScript, Node.js, Python, PostgreSQL, AWS, Docker, System Design, Team Leadership"></textarea>
+          <label for="languages">🌐 Languages (comma-separated)</label>
+          <textarea id="languages" style="height:60px;" placeholder="English (Fluent), Hindi (Native), Spanish (Basic)"></textarea>
         </div>
         <div class="form-group" style="margin-top:16px;">
           <label>📁 Projects & Certifications (Optional ATS Boosters)</label>
           <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">List key projects, open-source contributions, or certifications here.</div>
           <div id="projectsCertsContainer"></div>
           <button type="button" class="secondary-btn" id="addProject" style="margin-top:8px;">+ Add Project / Cert</button>
+        </div>
+        <div style="text-align:right;margin-top:10px;">
+          <button class="section-next-btn" data-next="ai">Next: AI Enhancement →</button>
         </div>
       </div>
 
@@ -740,8 +739,18 @@
         <h3>✨ AI Rewrites Your Resume</h3>
         <button id="aiGenerateBtn" class="gold-btn">🧠 Generate AI Version</button>
       </div>
-      <div id="aiStatus" style="font-size:13px;color:var(--muted);margin-bottom:10px;">Fill out your resume in the "Build" tab, then click Generate.</div>
+      <div id="aiStatus" style="font-size:13px;color:var(--muted);margin-bottom:10px;">Fill out your resume in the "Build" tab or paste your existing resume below, then click Generate.</div>
       
+      <div class="ai-input-actions">
+        <button type="button" class="secondary-btn" id="aiCopyInputBtn">📋 Copy from Builder</button>
+        <button type="button" class="secondary-btn" onclick="document.getElementById('aiResumeFileInput').click()">📎 Upload PDF/DOCX</button>
+        <input type="file" id="aiResumeFileInput" accept=".pdf,.docx,.doc,image/*" style="display:none;" />
+      </div>
+      <div class="form-group">
+        <label for="aiSourceText">✍️ Your Resume Text (Edit or paste here)</label>
+        <textarea id="aiSourceText" style="height:120px;" placeholder="Paste your original resume text here..."></textarea>
+      </div>
+
       <div class="ai-grid">
         <div class="ai-box">
           <div class="ai-box-header">
@@ -872,6 +881,7 @@
   let previewZoom = 100;
   let autosaveTimer = null;
   let currentResumeId = null;
+  let aiSourceResumeText = "";
   const STORAGE_KEY = 'vishisht_resume_v1';
   const TPL_STORAGE_KEY = 'vishisht_template_v1';
 
@@ -903,7 +913,9 @@
       github: document.getElementById("github").value.trim(),
       summary: document.getElementById("summary").value.trim(),
       buildJobDescription: document.getElementById("buildJobDescription").value.trim(),
-      skills: document.getElementById("skills").value.trim(),
+      coreSkills: document.getElementById("coreSkills").value.trim(),
+      technicalSkills: document.getElementById("technicalSkills").value.trim(),
+      languages: document.getElementById("languages").value.trim(),
       experience: Array.from(document.querySelectorAll(".experience-entry")).map(el => ({
         title: el.querySelector(".exp-title").value.trim(),
         company: el.querySelector(".exp-company").value.trim(),
@@ -924,7 +936,7 @@
   }
 
   function renderPreviewHTML(d, includePhoto = true) {
-    let html = '';
+    let html = '<div class="preview-page">';
     if (selectedTemplate === "creative" && uploadedPhotoUrl && includePhoto) {
       html += `<img src="${uploadedPhotoUrl}" class="preview-photo" alt="Profile photo" />`;
     }
@@ -950,10 +962,15 @@
       html += `<h2>Education</h2>`;
       d.education.forEach(ed => {
         if (!ed.degree && !ed.institution) return;
-        html += `<div><strong>${escapeHtml(ed.degree)}</strong>${ed.institution ? ' — ' + escapeHtml(ed.institution) : ''} <span style="color:#7A6B3E;font-size:11px;">${ed.dates ? '(' + escapeHtml(ed.dates) + ')' : ''}</span></div>`;
+        html += `<div><strong>${escapeHtml(ed.degree)}</strong>${ed.institution ? ' — ' + escapeHtml(ed.institution) : ''}${ed.dates ? ' <span style="color:#7A6B3E;font-size:11px;">(' + escapeHtml(ed.dates) + ')</span>' : ''}</div>`;
       });
     }
-    if (d.skills) html += `<h2>Skills</h2><p>${escapeHtml(d.skills)}</p>`;
+    if (d.coreSkills || d.technicalSkills) {
+      html += `<h2>Skills</h2><div class="skills-row">`;
+      if (d.coreSkills) html += `<div class="col"><strong style="font-size:12px;">Core Skills</strong><p>${escapeHtml(d.coreSkills)}</p></div>`;
+      if (d.technicalSkills) html += `<div class="col"><strong style="font-size:12px;">Technical Skills</strong><p>${escapeHtml(d.technicalSkills)}</p></div>`;
+      html += `</div>`;
+    }
     if (d.projects.length && d.projects.some(p => p.title || p.desc)) {
       html += `<h2>Projects & Certifications</h2>`;
       d.projects.forEach(p => {
@@ -964,7 +981,9 @@
         html += `</div>`;
       });
     }
+    if (d.languages) html += `<h2>Languages</h2><p>${escapeHtml(d.languages)}</p>`;
     html += `<div class="warli-watermark">✦ VishishtResume ✦</div>`;
+    html += `</div>`;
     return html;
   }
 
@@ -973,15 +992,29 @@
     const d = collectResumeData();
     preview.className = '';
     preview.classList.add(`template-${selectedTemplate}`);
-    const hasContent = d.fullName || d.email || d.summary || d.experience.length || d.education.length || d.skills || d.professionalTitle;
+    const hasContent = d.fullName || d.email || d.summary || d.experience.length || d.education.length || d.coreSkills || d.technicalSkills || d.languages || d.professionalTitle;
     if (!hasContent) {
-      preview.innerHTML = `<div class="placeholder" style="border:none;padding:24px;background:transparent;"><div style="font-size:36px;margin-bottom:10px;">📄</div>Start adding your details and selecting a template. The preview will update live.</div>`;
+      preview.innerHTML = `<div class="preview-page"><div class="placeholder" style="border:none;padding:24px;background:transparent;"><div style="font-size:36px;margin-bottom:10px;">📄</div>Start adding your details and selecting a template. The preview will update live.</div></div>`;
     } else {
       preview.innerHTML = renderPreviewHTML(d);
     }
+    checkPageLength();
     updateCompletion();
     updateTabCounts();
     scheduleAutosave();
+  }
+
+  function checkPageLength() {
+    const preview = document.getElementById("resumePreview");
+    const warning = document.getElementById("pageWarning");
+    const page = preview.querySelector(".preview-page");
+    if (!page) { warning.classList.add("hidden"); return; }
+    // A4 one page = ~1123px at 96 DPI. Give a small buffer.
+    if (page.scrollHeight > 1130) {
+      warning.classList.remove("hidden");
+    } else {
+      warning.classList.add("hidden");
+    }
   }
 
   // ============ COMPLETION METER ============
@@ -995,8 +1028,8 @@
     { key: 'experience', label: 'At least 1 experience', tab: 'experience', check: (d) => d.experience.some(e => e.title && e.company) },
     { key: 'expBullets', label: 'Experience bullets added', tab: 'experience', check: (d) => d.experience.some(e => e.bullets.length >= 2) },
     { key: 'education', label: 'At least 1 education', tab: 'education', check: (d) => d.education.some(e => e.degree || e.institution) },
-    { key: 'skills', label: 'Skills listed (≥ 3)', tab: 'skills', check: (d) => d.skills.split(',').filter(s => s.trim()).length >= 3 },
-    { key: 'linkedin', label: 'LinkedIn URL', tab: 'personal' },
+    { key: 'skills', label: 'Skills listed', tab: 'skills', check: (d) => d.coreSkills.length > 0 || d.technicalSkills.length > 0 },
+    { key: 'languages', label: 'Languages listed', tab: 'skills', check: (d) => d.languages.length > 0 },
   ];
   function updateCompletion() {
     const d = collectResumeData();
@@ -1073,7 +1106,7 @@
       const raw = localStorage.getItem(STORAGE_KEY); const tpl = localStorage.getItem(TPL_STORAGE_KEY);
       if (!raw) return false;
       const d = JSON.parse(raw);
-      ['fullName','professionalTitle','email','phone','location','website','linkedin','github','summary','buildJobDescription','skills'].forEach(k => { const el = document.getElementById(k); if (el && d[k]) el.value = d[k]; });
+      ['fullName','professionalTitle','email','phone','location','website','linkedin','github','summary','buildJobDescription','coreSkills','technicalSkills','languages'].forEach(k => { const el = document.getElementById(k); if (el && d[k]) el.value = d[k]; });
       document.getElementById('experienceList').innerHTML = '';
       (d.experience || []).forEach(job => { const c = document.getElementById('experienceTemplate').content.cloneNode(true); document.getElementById('experienceList').appendChild(c); const b = document.getElementById('experienceList').lastElementChild; b.querySelector('.exp-title').value = job.title || ''; b.querySelector('.exp-company').value = job.company || ''; b.querySelector('.exp-dates').value = job.dates || ''; b.querySelector('.exp-bullets').value = (job.bullets || []).join('\n'); });
       document.getElementById('educationList').innerHTML = '';
@@ -1086,7 +1119,8 @@
   }
 
   document.querySelectorAll('.form-tab-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.form-tab-btn').forEach(b => b.classList.remove('active')); document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active')); btn.classList.add('active'); document.getElementById(`form-${btn.dataset.formtab}`).classList.add('active'); }); });
-  document.getElementById('nextToSummaryBtn').addEventListener('click', () => { document.querySelector('.form-tab-btn[data-formtab="summary"]').click(); });
+  document.querySelectorAll('.section-next-btn').forEach(btn => { btn.addEventListener('click', () => { const next = btn.dataset.next; if (next === 'ai') { document.querySelector('.tab-btn[data-tab="ai"]').click(); } else { document.querySelector(`.form-tab-btn[data-formtab="${next}"]`)?.click(); } }); });
+  document.getElementById('nextToSummaryBtn')?.addEventListener('click', () => { document.querySelector('.form-tab-btn[data-formtab="summary"]').click(); });
   function bindInputListeners() { document.querySelectorAll("#tab-build input, #tab-build textarea").forEach(el => { el.removeEventListener("input", updatePreview); el.addEventListener("input", updatePreview); }); }
   bindInputListeners();
 
@@ -1144,115 +1178,20 @@
   async function extractPdfText(file) { const ab = await file.arrayBuffer(); const pdf = await pdfjsLib.getDocument({ data: ab }).promise; let text = ""; for (let i = 1; i <= pdf.numPages; i++) { const p = await pdf.getPage(i); const c = await p.getTextContent(); text += c.items.map(it => it.str).join(" ") + "\n"; } return text; }
   async function extractDocxText(file) { const ab = await file.arrayBuffer(); return (await mammoth.extractRawText({ arrayBuffer: ab })).value; }
 
-  // ============ SCORE TAB ============
-  const SAMPLE_RESUME = `Alex Morgan
-Senior Software Engineer
-alex.morgan@example.com | +1 (415) 555-0132 | San Francisco, CA
-
-Summary
-Product-minded engineer with 6+ years shipping SaaS to 100k+ users. Deep in React, TypeScript, Node.js, and cloud infrastructure. Led cross-functional teams of 5 and mentored 3 juniors to senior.
-
-Experience
-Senior Software Engineer — Fintechly | Jan 2022 - Present
-- Led migration from monolith to microservices; cut deploy time 70%.
-- Owned billing service used by 40k paying customers with 99.98% uptime.
-- Mentored 3 juniors; two promoted to Senior in 18 months.
-
-Software Engineer — Cloudline Systems | Jul 2019 - Dec 2021
-- Built React dashboard consumed by 15k enterprise users daily.
-- Reduced infra spend 32% via query optimization and Redis caching.
-
-Education
-B.Tech Computer Science — IIT Delhi, 2015-2019
-
-Skills
-React, TypeScript, Node.js, Python, PostgreSQL, AWS, Docker, Kubernetes, System Design, Team Leadership`;
-  const SAMPLE_JD = `Senior Software Engineer — Full Stack
-
-We're looking for a Senior Software Engineer with 5+ years of experience building scalable SaaS products. You'll work with React, TypeScript, Node.js, and AWS to ship features to hundreds of thousands of users.
-
-Requirements:
-- Strong experience with React and TypeScript
-- Solid backend skills in Node.js or Python
-- Comfortable with PostgreSQL and Redis
-- Experience with AWS, Docker, and CI/CD
-- Track record of leading engineers and mentoring
-- Bonus: microservices, Kubernetes, system design`;
-
-  document.getElementById('tryExampleBtn').addEventListener('click', () => { document.getElementById('resumeText').value = SAMPLE_RESUME; document.getElementById('resumeText').dispatchEvent(new Event('input')); document.getElementById('jobDescription').value = SAMPLE_JD; document.getElementById('jobDescription').dispatchEvent(new Event('input')); toast('Example loaded — hit "Score my resume" to see the result', 'info'); });
-
-  document.getElementById("scoreBtn").addEventListener("click", async () => {
-    const resume = document.getElementById("resumeText").value; const jd = document.getElementById("jobDescription").value;
-    const statusEl = document.getElementById("status"); const resultsEl = document.getElementById("results");
-    if (!resume.trim() || !jd.trim()) { toast('Fill in both resume and JD', 'warn'); return; }
-    statusEl.textContent = "🔍 Analyzing...";
-    resultsEl.innerHTML = `<div class="card"><div class="skeleton skeleton-line" style="width:60%;height:26px;"></div><div class="skeleton skeleton-line" style="width:90%;"></div><div class="skeleton skeleton-line" style="width:80%;"></div><div class="skeleton skeleton-line" style="width:70%;"></div></div>`;
-    await new Promise(r => setTimeout(r, 800));
-    const score = calculateKeywordMatch(resume, jd);
-    displayScore(score, resume, jd, resultsEl);
-    statusEl.textContent = "✅ Analysis complete!";
-    if (score >= 80) { toast(`Great match — ${score}%! 🎉`, 'success'); fireConfetti(); }
-    else if (score >= 60) toast(`Good match — ${score}%`, 'success');
-    else toast(`Match is ${score}% — see suggestions below`, 'warn');
-  });
-
-  function calculateKeywordMatch(resume, jd) { const rw = resume.toLowerCase().split(/\W+/); const jw = new Set(jd.toLowerCase().split(/\W+/).filter(w => w.length > 3)); let m = 0; jw.forEach(w => { if (rw.includes(w)) m++; }); return jw.size ? Math.round((m / jw.size) * 100) : 0; }
-  function getMissingKeywords(resume, jd) { const rw = new Set(resume.toLowerCase().split(/\W+/)); const stop = new Set(['the','a','an','and','or','but','in','on','at','for','with','without','by','to','of','from','is','are','was','were','be','been','being','have','has','had','do','does','did','will','would','could','should','may','might','must','shall','can','you','your','our','their','they','this','that','these','those','which','when','where','while','also','more','less','than','then','into','out','over','under']); return [...new Set(jd.toLowerCase().split(/\W+/).filter(w => w.length > 3 && !stop.has(w) && !rw.has(w)))]; }
-  
-  function displayScore(score, resume, jd, el) {
-    const color = score >= 70 ? 'var(--accent)' : score >= 40 ? 'var(--gold)' : 'var(--warn)';
-    const bg = score >= 70 ? 'var(--accent-light)' : score >= 40 ? 'var(--gold-light)' : 'var(--warn-soft)';
-    const verdict = score >= 70 ? '✅ Great match! Likely shortlisted.' : score >= 40 ? '⚠️ Needs improvement — add missing keywords.' : '❌ Low match — review suggestions below.';
-    let html = `<div class="card"><div class="gauge-row">
-      <div class="gauge-wrap"><svg width="120" height="120" viewBox="0 0 120 120">
-        <circle class="gauge-track" cx="60" cy="60" r="46"/>
-        <circle class="gauge-fill" cx="60" cy="60" r="46" stroke="${color}" stroke-dasharray="${2 * Math.PI * 46}" stroke-dashoffset="${2 * Math.PI * 46 * (1 - score/100)}"/></svg>
-        <div class="gauge-number">${score}<small>%</small></div></div>
-      <div class="gauge-label-block"><h2>ATS Match Score</h2>
-        <div class="verdict" style="color:${color};background:${bg}">${verdict}</div>
-      </div></div></div>`;
-    
-    const missing = getMissingKeywords(resume, jd).slice(0, 12);
-    if (missing.length) {
-      html += `<div class="card"><h2>💡 What is currently missing from your resume?</h2>
-      <p style="font-size:14px;color:var(--muted);margin-bottom:12px;">Based on the Job Description you shared, the AI recommends adding the following keywords and phrases to get ahead:</p>
-      <ul class="missing-keywords-list">`;
-      missing.forEach(k => html += `<li>${escapeHtml(k)}</li>`);
-      html += `</ul></div>`;
-      
-      html += `<div class="card" style="background:var(--accent-light);border-color:var(--accent);">
-      <h2 style="color:var(--accent-dark);">📝 How to improve your resume based on the JD</h2>
-      <ul style="padding-left:20px;font-size:13px;line-height:1.8;color:var(--ink);">
-        <li><strong>Add missing terms:</strong> Try to weave phrases like ${missing.slice(0, 4).map(k => `"${escapeHtml(k)}"`).join(', ')} into your summary or experience bullets.</li>
-        <li><strong>Focus on impact:</strong> Change generic lines to specific, metric-driven achievements (e.g., "Reduced costs by 25% by implementing...").</li>
-        <li><strong>Mirror the Job Description:</strong> Use the exact words from the JD (e.g., "System Design", "CI/CD") to get past the ATS scanner.</li>
-      </ul>
-      </div>`;
-    }
-
-    html += `<div class="card" style="background:var(--gold-light);border-color:var(--gold);">
-      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-        <span style="font-size:28px;">🎯</span>
-        <div><strong>Want to fix these issues?</strong><br><span style="font-size:13px;color:var(--muted);">Go to the "Build my resume" tab and then hit "AI Enhancement" to get a fully rewritten, grammatically perfect version.</span></div>
-        <button class="gold-btn" onclick="document.querySelector('[data-tab=\\'ai\\']').click();" style="margin-left:auto;">✨ AI Rewrite Now</button>
-      </div></div>`;
-
-    el.innerHTML = html;
-    if (statusEl) statusEl.textContent = "✅ Analysis complete!";
+  // ============ AI ENHANCE TAB (SIDE BY SIDE) ============
+  function getAiSourceText() {
+    return aiSourceResumeText || document.getElementById('aiSourceText').value.trim() || generateAiContent();
   }
 
-  function fireConfetti() { const canvas = document.getElementById('confettiCanvas'); canvas.classList.add('active'); canvas.width = window.innerWidth; canvas.height = window.innerHeight; const ctx = canvas.getContext('2d'); const colors = ['#9A4B1F','#D4A017','#0B6E4F','#2B2411','#A03E21']; const pieces = Array.from({length: 120}, () => ({ x: Math.random() * canvas.width, y: -20 - Math.random() * 100, vx: (Math.random() - 0.5) * 6, vy: 2 + Math.random() * 4, s: 4 + Math.random() * 8, r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.2, c: colors[Math.floor(Math.random() * colors.length)] })); let f = 0; function draw() { ctx.clearRect(0,0,canvas.width,canvas.height); pieces.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.r += p.vr; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.fillRect(-p.s/2, -p.s/2, p.s, p.s * 0.6); ctx.restore(); }); f++; if (f < 130) requestAnimationFrame(draw); else { canvas.classList.remove('active'); ctx.clearRect(0,0,canvas.width,canvas.height); } } draw(); }
-
-  // ============ AI ENHANCE TAB (SIDE BY SIDE) ============
   function generateAiContent() {
     const d = collectResumeData();
     let text = '';
-    if (d.fullName) text += `**${d.fullName}**\n`;
+    if (d.fullName) text += `${d.fullName}\n`;
     if (d.professionalTitle) text += `${d.professionalTitle}\n`;
     if (d.email || d.phone || d.location) text += `${d.email} • ${d.phone} • ${d.location}\n\n`;
-    if (d.summary) text += `**Summary**\n${d.summary}\n\n`;
+    if (d.summary) text += `Summary\n${d.summary}\n\n`;
     if (d.experience.length && d.experience.some(j => j.title || j.company || j.bullets.length)) {
-      text += `**Experience**\n`;
+      text += `Experience\n`;
       d.experience.forEach(job => {
         if (!job.title && !job.company && !job.bullets.length) return;
         text += `${job.title} — ${job.company}\n${job.dates}\n`;
@@ -1261,64 +1200,75 @@ Requirements:
       });
     }
     if (d.education.length && d.education.some(e => e.degree || e.institution)) {
-      text += `**Education**\n`;
+      text += `Education\n`;
       d.education.forEach(ed => { if (!ed.degree && !ed.institution) return; text += `${ed.degree} — ${ed.institution} (${ed.dates || ''})\n`; });
       text += `\n`;
     }
-    if (d.skills) text += `**Skills**\n${d.skills}\n`;
-    if (d.projects.length && d.projects.some(p => p.title || p.desc)) {
-      text += `\n**Projects & Certifications**\n`;
-      d.projects.forEach(p => { if (!p.title && !p.desc) return; text += `${p.title}${p.details ? ' — ' + p.details : ''}\n${p.desc || ''}\n`; });
+    if (d.coreSkills || d.technicalSkills) {
+      text += `Skills\n`;
+      if (d.coreSkills) text += `Core Skills: ${d.coreSkills}\n`;
+      if (d.technicalSkills) text += `Technical Skills: ${d.technicalSkills}\n`;
+      text += `\n`;
     }
+    if (d.languages) text += `Languages\n${d.languages}\n`;
     return text || "Please go to the 'Build my resume' tab and add your details first.";
   }
 
+  // Rotating vocabulary to avoid repeating "Leveraged"
+  const ACTION_VERBS = ["Spearheaded", "Owned", "Drove", "Engineered", "Delivered", "Optimized", "Built", "Streamlined", "Led", "Championed", "Executed", "Accelerated"];
   function generateAiRewrittenContent() {
     const d = collectResumeData();
     let text = '';
-    if (d.fullName) text += `**${d.fullName}**\n`;
+    if (d.fullName) text += `${d.fullName}\n`;
     if (d.professionalTitle) text += `${d.professionalTitle}\n`;
     if (d.email || d.phone || d.location) text += `${d.email} • ${d.phone} • ${d.location}\n\n`;
 
     if (d.summary) {
       let fixedSummary = d.summary;
       if (fixedSummary.split(/\s+/).length < 20) fixedSummary += " Proven track record of delivering high-quality, scalable solutions in fast-paced environments.";
-      text += `**Summary**\n${fixedSummary}\n\n`;
+      text += `Summary\n${fixedSummary}\n\n`;
     }
     if (d.experience.length && d.experience.some(j => j.title || j.company || j.bullets.length)) {
-      text += `**Experience**\n`;
+      text += `Experience\n`;
       d.experience.forEach(job => {
         if (!job.title && !job.company && !job.bullets.length) return;
-        let title = job.title || 'Professional Role'; if (title.split(' ')[0].toLowerCase() === 'worked' || title.split(' ')[0].toLowerCase() === 'helped') title = 'Spearheaded ' + title.replace(/worked on|helped build|worked with/i, '');
+        let title = job.title || 'Professional Role';
+        if (title.split(' ')[0].toLowerCase() === 'worked' || title.split(' ')[0].toLowerCase() === 'helped') title = 'Senior ' + title.replace(/worked on|helped build|worked with/i, '');
         text += `${title} — ${job.company}\n${job.dates}\n`;
-        (job.bullets || []).forEach(b => {
+        (job.bullets || []).forEach((b, idx) => {
           if (!b.trim()) return;
           let line = b.trim();
-          if (!/^(led|built|cut|owned|developed|designed|improved|reduced|increased|spearheaded|migrated|mentored)/i.test(line)) line = 'Leveraged expertise to ' + line.toLowerCase();
+          // If it doesn't start with a strong verb, prepend a rotating action verb
+          if (!/^(led|built|cut|owned|developed|designed|improved|reduced|increased|spearheaded|migrated|mentored|delivered|drove|engineered|optimized|streamlined|championed|executed|accelerated)/i.test(line)) {
+            const verb = ACTION_VERBS[idx % ACTION_VERBS.length];
+            line = verb + ' ' + line.charAt(0).toLowerCase() + line.slice(1);
+          }
           text += `- ${line}\n`;
         });
         text += `\n`;
       });
     }
     if (d.education.length && d.education.some(e => e.degree || e.institution)) {
-      text += `**Education**\n`;
+      text += `Education\n`;
       d.education.forEach(ed => { if (!ed.degree && !ed.institution) return; text += `${ed.degree} — ${ed.institution} (${ed.dates || ''})\n`; });
       text += `\n`;
     }
-    if (d.skills) text += `**Skills**\n${d.skills}\n`;
-    if (d.projects.length && d.projects.some(p => p.title || p.desc)) {
-      text += `\n**Projects & Certifications**\n`;
-      d.projects.forEach(p => { if (!p.title && !p.desc) return; text += `${p.title}${p.details ? ' — ' + p.details : ''}\n${p.desc || ''}\n`; });
+    if (d.coreSkills || d.technicalSkills) {
+      text += `Skills\n`;
+      if (d.coreSkills) text += `Core Skills: ${d.coreSkills}\n`;
+      if (d.technicalSkills) text += `Technical Skills: ${d.technicalSkills}\n`;
+      text += `\n`;
     }
+    if (d.languages) text += `Languages\n${d.languages}\n`;
     return text || "Please go to the 'Build my resume' tab and add your details first.";
   }
 
   function formatAsHtml(text) {
     if (!text) return '<p>No content to display.</p>';
     return text.split('\n').map(line => {
-      if (line.startsWith('**')) return `<strong style="display:block;margin-top:14px;color:var(--structure);font-size:14px;">${escapeHtml(line.replace(/\*\*/g, ''))}</strong>`;
-      if (line.startsWith('- ')) return `<li style="margin-left:20px;">${escapeHtml(line.slice(2))}</li>`;
       if (line.trim() === '') return '<br>';
+      if (line.startsWith('- ')) return `<li style="margin-left:20px;">${escapeHtml(line.slice(2))}</li>`;
+      if (/^(Summary|Experience|Education|Skills|Languages)$/i.test(line.trim())) return `<strong style="display:block;margin-top:14px;color:var(--structure);font-size:14px;">${escapeHtml(line)}</strong>`;
       return `<p>${escapeHtml(line)}</p>`;
     }).join('');
   }
@@ -1327,16 +1277,17 @@ Requirements:
     const statusEl = document.getElementById('aiStatus');
     const origEl = document.getElementById('aiOriginalContent');
     const rewEl = document.getElementById('aiRewrittenContent');
+    const sourceText = document.getElementById('aiSourceText').value.trim();
     const d = collectResumeData();
-    if (!d.fullName) { statusEl.textContent = "⚠️ Please go to the 'Build my resume' tab first and add your personal details."; return; }
+    if (!sourceText && !d.fullName) { statusEl.textContent = "⚠️ Please add your resume details in the 'Build' tab, or paste your resume text above."; return; }
 
     statusEl.textContent = "🧠 AI is analyzing your resume...";
     origEl.innerHTML = `<p style="color:var(--muted);">Loading your content...</p>`;
     rewEl.innerHTML = `<p style="color:var(--muted);">Generating polished version...</p>`;
 
-    await new Promise(r => setTimeout(r, 800)); // Simulate AI processing
+    await new Promise(r => setTimeout(r, 800));
 
-    origEl.innerHTML = formatAsHtml(generateAiContent());
+    origEl.innerHTML = formatAsHtml(sourceText || generateAiContent());
     rewEl.innerHTML = formatAsHtml(generateAiRewrittenContent());
     statusEl.textContent = "✅ AI version generated! You can now copy it.";
   });
@@ -1348,6 +1299,31 @@ Requirements:
     } else {
       const ta = document.createElement('textarea'); ta.value = content; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); toast('AI version copied!', 'success');
     }
+  });
+
+  document.getElementById('aiCopyInputBtn').addEventListener('click', () => {
+    const content = generateAiContent();
+    document.getElementById('aiSourceText').value = content;
+    toast('Copied from builder', 'success');
+  });
+
+  document.getElementById('aiResumeFileInput').addEventListener('change', async (e) => {
+    const file = e.target.files[0]; if (!file) return;
+    const statusEl = document.getElementById('aiStatus');
+    statusEl.textContent = `📖 Reading ${file.name}...`;
+    try {
+      let text = "";
+      if (file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf")) text = await extractPdfText(file);
+      else if (file.type.includes("word") || file.name.toLowerCase().endsWith(".docx")) text = await extractDocxText(file);
+      else throw new Error("Unsupported file type. Use PDF or DOCX.");
+      if (!text.trim()) throw new Error("No readable text found.");
+      document.getElementById('aiSourceText').value = text.trim();
+      statusEl.textContent = `✅ Loaded from ${file.name} — click Generate`;
+      toast(`Loaded: ${file.name}`, 'success');
+    } catch (err) {
+      statusEl.textContent = err.message || "Could not read that file.";
+      toast(err.message || 'Upload failed', 'error');
+    } finally { e.target.value = ""; }
   });
 
   // ============ SAVE / LOAD / CLEAR ============
@@ -1371,14 +1347,16 @@ Requirements:
     [{ title: "Senior Software Engineer", company: "Fintechly", dates: "Jan 2022 - Present", bullets: ["Led migration from monolith to microservices — cut deploy time 70%.", "Owned billing service used by 40k paying customers with 99.98% uptime.", "Mentored 3 juniors; two promoted to Senior in 18 months."] }, { title: "Software Engineer", company: "Cloudline Systems", dates: "Jul 2019 - Dec 2021", bullets: ["Built React dashboard consumed by 15k enterprise users daily.", "Reduced infra spend 32% via query optimization and Redis caching."] }].forEach(job => { const c = document.getElementById("experienceTemplate").content.cloneNode(true); document.getElementById("experienceList").appendChild(c); const b = document.getElementById("experienceList").lastElementChild; b.querySelector(".exp-title").value = job.title; b.querySelector(".exp-company").value = job.company; b.querySelector(".exp-dates").value = job.dates; b.querySelector(".exp-bullets").value = job.bullets.join("\n"); });
     document.getElementById("educationList").innerHTML = "";
     [{ degree: "B.Tech Computer Science", institution: "IIT Delhi", dates: "2015 - 2019" }].forEach(ed => { const c = document.getElementById("educationTemplate").content.cloneNode(true); document.getElementById("educationList").appendChild(c); const b = document.getElementById("educationList").lastElementChild; b.querySelector(".edu-degree").value = ed.degree; b.querySelector(".edu-institution").value = ed.institution; b.querySelector(".edu-dates").value = ed.dates; });
-    document.getElementById("skills").value = "React, TypeScript, Node.js, Python, PostgreSQL, AWS, Docker, System Design, Team Leadership";
+    document.getElementById("coreSkills").value = "Team Leadership, Stakeholder Management, Project Planning, Problem Solving";
+    document.getElementById("technicalSkills").value = "React, TypeScript, Node.js, Python, PostgreSQL, AWS, Docker, System Design";
+    document.getElementById("languages").value = "English (Fluent), Hindi (Native)";
     attachDynamicListeners(); bindInputListeners(); document.getElementById('summary').dispatchEvent(new Event('input'));
     updatePreview(); toast('Sample data loaded', 'success');
   });
 
   document.getElementById("clearAllBtn").addEventListener("click", () => {
     if (!confirm("Clear the entire resume? This can't be undone.")) return;
-    ['fullName','professionalTitle','email','phone','location','website','linkedin','github','summary','buildJobDescription','skills'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    ['fullName','professionalTitle','email','phone','location','website','linkedin','github','summary','buildJobDescription','coreSkills','technicalSkills','languages'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
     document.getElementById("experienceList").innerHTML = ""; document.getElementById("educationList").innerHTML = ""; document.getElementById("projectsCertsContainer").innerHTML = "";
     uploadedPhotoUrl = null; currentResumeId = null;
     updatePreview(); toast('Cleared everything', 'info');
@@ -1388,7 +1366,7 @@ Requirements:
   document.getElementById("downloadResumePdfBtn").addEventListener("click", () => {
     const preview = document.getElementById("resumePreview");
     const htmlContent = `<html><head><meta charset="UTF-8"><title>Resume</title>
-      <style>body { font-family: 'Inter', sans-serif; padding: 40px; max-width: 800px; margin: 0 auto; } h1 { font-family: 'Poppins', sans-serif; text-align: center; font-size: 24px; } .contact-line { text-align: center; font-size: 13px; color: #7A6B3E; margin-bottom: 20px; } h2 { font-size: 14px; text-transform: uppercase; border-bottom: 2px solid #E8D48A; padding-bottom: 6px; margin-top: 20px; color: #9A4B1F; } .job-title { font-weight: 600; margin-top: 10px; } .job-dates { color: #7A6B3E; font-size: 13px; } ul { margin: 6px 0; padding-left: 20px; } li { margin-bottom: 4px; line-height: 1.5; } p { margin: 6px 0; line-height: 1.6; } .watermark { text-align: center; opacity: 0.3; font-size: 10px; margin-top: 30px; letter-spacing: 2px; }</style></head><body>${preview.innerHTML}<div class="watermark">✦ Generated by VishishtResume ✦</div></body></html>`;
+      <style>body { font-family: 'Inter', sans-serif; padding: 40px; max-width: 780px; margin: 0 auto; } h1 { font-family: 'Poppins', sans-serif; text-align: center; font-size: 24px; } .contact-line { text-align: center; font-size: 13px; color: #7A6B3E; margin-bottom: 20px; } h2 { font-size: 14px; text-transform: uppercase; border-bottom: 2px solid #E8D48A; padding-bottom: 6px; margin-top: 20px; color: #9A4B1F; } .job-title { font-weight: 600; margin-top: 10px; } .job-dates { color: #7A6B3E; font-size: 13px; } ul { margin: 6px 0; padding-left: 20px; } li { margin-bottom: 4px; line-height: 1.5; } p { margin: 6px 0; line-height: 1.6; } .skills-row { display: flex; gap: 20px; margin-top: 8px; } .watermark { text-align: center; opacity: 0.3; font-size: 10px; margin-top: 30px; letter-spacing: 2px; }</style></head><body>${preview.querySelector('.preview-page')?.innerHTML || preview.innerHTML}<div class="watermark">✦ Generated by VishishtResume ✦</div></body></html>`;
     const blob = new Blob([htmlContent], { type: 'application/pdf' });
     const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'resume.pdf';
     document.body.appendChild(link); link.click(); document.body.removeChild(link); toast('PDF downloaded', 'success');
@@ -1397,7 +1375,7 @@ Requirements:
   // ============ DOWNLOAD WORD ============
   document.getElementById("downloadResumeDocxBtn").addEventListener("click", () => {
     const preview = document.getElementById("resumePreview");
-    const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset="UTF-8"><title>Resume</title><style>body { font-family: 'Inter', 'Segoe UI', sans-serif; padding: 40px; max-width: 800px; margin: 0 auto; } h1 { font-family: 'Poppins', sans-serif; text-align: center; font-size: 22pt; } .contact-line { text-align: center; font-size: 11pt; color: #7A6B3E; margin-bottom: 18px; } h2 { font-size: 12pt; text-transform: uppercase; border-bottom: 2px solid #E8D48A; padding-bottom: 6px; margin-top: 18px; color: #9A4B1F; } .job-title { font-weight: 600; margin-top: 10px; } .job-dates { color: #7A6B3E; font-size: 11pt; } ul { margin: 6px 0; padding-left: 20px; } li { margin-bottom: 4px; line-height: 1.5; } p { margin: 6px 0; line-height: 1.6; }</style></head><body>${preview.innerHTML}</body></html>`;
+    const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset="UTF-8"><title>Resume</title><style>body { font-family: 'Inter', 'Segoe UI', sans-serif; padding: 40px; max-width: 780px; margin: 0 auto; } h1 { font-family: 'Poppins', sans-serif; text-align: center; font-size: 22pt; } .contact-line { text-align: center; font-size: 11pt; color: #7A6B3E; margin-bottom: 18px; } h2 { font-size: 12pt; text-transform: uppercase; border-bottom: 2px solid #E8D48A; padding-bottom: 6px; margin-top: 18px; color: #9A4B1F; } .job-title { font-weight: 600; margin-top: 10px; } .job-dates { color: #7A6B3E; font-size: 11pt; } ul { margin: 6px 0; padding-left: 20px; } li { margin-bottom: 4px; line-height: 1.5; } p { margin: 6px 0; line-height: 1.6; } .skills-row { display: flex; gap: 20px; margin-top: 8px; }</style></head><body>${preview.querySelector('.preview-page')?.innerHTML || preview.innerHTML}</body></html>`;
     const blob = new Blob([htmlContent], { type: 'application/msword' });
     const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'resume.doc';
     document.body.appendChild(link); link.click(); document.body.removeChild(link); toast('Word document downloaded', 'success');
@@ -1419,7 +1397,7 @@ Requirements:
     const { data, error } = await supabaseClient.from("resumes").select("*").eq("id", id).single();
     if (error) { toast(error.message, 'error'); return; }
     const r = data.resume_data;
-    document.getElementById("fullName").value = r.fullName || ""; document.getElementById("professionalTitle").value = r.professionalTitle || ""; document.getElementById("email").value = r.email || ""; document.getElementById("phone").value = r.phone || ""; document.getElementById("location").value = r.location || ""; document.getElementById("website").value = r.website || ""; document.getElementById("linkedin").value = r.linkedin || ""; document.getElementById("github").value = r.github || ""; document.getElementById("summary").value = r.summary || ""; document.getElementById("skills").value = r.skills || ""; document.getElementById("buildJobDescription").value = data.job_description || "";
+    document.getElementById("fullName").value = r.fullName || ""; document.getElementById("professionalTitle").value = r.professionalTitle || ""; document.getElementById("email").value = r.email || ""; document.getElementById("phone").value = r.phone || ""; document.getElementById("location").value = r.location || ""; document.getElementById("website").value = r.website || ""; document.getElementById("linkedin").value = r.linkedin || ""; document.getElementById("github").value = r.github || ""; document.getElementById("summary").value = r.summary || ""; document.getElementById("coreSkills").value = r.coreSkills || ""; document.getElementById("technicalSkills").value = r.technicalSkills || ""; document.getElementById("languages").value = r.languages || ""; document.getElementById("buildJobDescription").value = data.job_description || "";
     document.getElementById("experienceList").innerHTML = ""; (r.experience || []).forEach(job => { const clone = document.getElementById("experienceTemplate").content.cloneNode(true); document.getElementById("experienceList").appendChild(clone); const block = document.getElementById("experienceList").lastElementChild; block.querySelector(".exp-title").value = job.title || ""; block.querySelector(".exp-company").value = job.company || ""; block.querySelector(".exp-dates").value = job.dates || ""; block.querySelector(".exp-bullets").value = (job.bullets || []).join("\n"); });
     document.getElementById("educationList").innerHTML = ""; (r.education || []).forEach(ed => { const clone = document.getElementById("educationTemplate").content.cloneNode(true); document.getElementById("educationList").appendChild(clone); const block = document.getElementById("educationList").lastElementChild; block.querySelector(".edu-degree").value = ed.degree || ""; block.querySelector(".edu-institution").value = ed.institution || ""; block.querySelector(".edu-dates").value = ed.dates || ""; });
     document.getElementById("projectsCertsContainer").innerHTML = ""; (r.projects || []).forEach(p => { const clone = document.getElementById("projectTemplate").content.cloneNode(true); document.getElementById("projectsCertsContainer").appendChild(clone); const block = document.getElementById("projectsCertsContainer").lastElementChild; block.querySelector(".project-title").value = p.title || ""; block.querySelector(".project-details").value = p.details || ""; block.querySelector(".project-desc").value = p.desc || ""; });
@@ -1462,16 +1440,9 @@ Requirements:
       btn.classList.add("active");
       document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
       if (btn.dataset.tab === "build") { updatePreview(); updateAISection(); }
-      if (btn.dataset.tab === "ai") { updateAiTab(); }
       if (btn.dataset.tab === "myresumes" && isAuthenticated()) { loadMyResumes(); }
     });
   });
-
-  function updateAiTab() {
-    if (!document.getElementById('aiOriginalContent').innerHTML.includes('Please go to')) {
-      document.getElementById('aiOriginalContent').innerHTML = formatAsHtml(generateAiContent());
-    }
-  }
 
   // ============ ZOOM & PREVIEW ============
   function setZoom(z) { previewZoom = Math.min(150, Math.max(60, z)); document.getElementById('resumePreview').style.transform = `scale(${previewZoom/100})`; document.getElementById('resumePreview').style.width = `${10000/previewZoom}%`; document.getElementById('zoomValue').textContent = `${previewZoom}%`; }
